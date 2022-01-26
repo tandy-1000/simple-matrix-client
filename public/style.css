@@ -30,6 +30,11 @@ header {
   border-left: none;
 }
 
+a {
+  color: #111111;
+  text-decoration: none;
+}
+
 .border-box {
   border: 0.01rem solid #111111;
 }
