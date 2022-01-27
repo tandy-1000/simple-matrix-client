@@ -1,7 +1,7 @@
 import
   pkg/karax/[karax, karaxdsl, vdom, kdom],
-  # std/asyncjs,
-  # pkg/matrix,
+  std/asyncjs,
+  pkg/matrix,
   shared
 
 type
@@ -12,17 +12,21 @@ type
 
 var
   globalClientView = ClientView.signinView
-  globalMenuView = MenuView.loginView
+  globalMenuView = MenuView.menuView
+  client = newAsyncMatrixClient("")
   chats: seq[string]
   chatParticipants: seq[string]
   chatName: string
   messages: seq[string]
-
-
 # chats = @["Chat Group 1", "Chat Group 2"]
 # chatParticipants = @["user1", "user2", "user3"]
 # chatName = "chat"
 # messages = @["hello!", "hello."]
+
+proc loginMatrix(homeserver, username, password: string) {.async.} =
+  client = newAsyncMatrixClient(homeserver)
+  let loginRes = await client.login(username, password)
+  # client.setToken loginRes.accessToken
 
 proc login =
   let
@@ -30,17 +34,19 @@ proc login =
     username = $getElementById("username").value
     password = $getElementById("password").value
   globalClientView = ClientView.chatView
-#   client = newAsyncMatrixClient(homeserver)
-#   let loginRes = client.login(username, password)
-#   client.setToken loginRes.accessToken
+  discard loginMatrix(homeserver, username, password)
+
+proc registerMatrix(homeserver, password: string) {.async.} =
+  client = newAsyncMatrixClient(homeserver)
+  let regRes = await client.registerGuest(password)
+  # client.setToken regRes.accessToken
 
 proc register =
   let
     homeserver = $getElementById("homeserver").value
     password = $getElementById("password").value
-  # client = newAsyncMatrixClient(homeserver)
-  # let regRes = await client.registerGuest(password)
-  # client.setToken regRes.accessToken
+  globalClientView = ClientView.chatView
+  discard registerMatrix(homeserver, password)
 
 proc signinModal*: Vnode =
   result = buildHtml:
@@ -65,7 +71,11 @@ proc signinModal*: Vnode =
           text "Login"
       of MenuView.registerView:
         h3:
-          text "Register:"
+          text "Register as guest:"
+        input(id = "homeserver", class = "login-input", `type` = "text", onkeyupenter = register, placeholder = "https://homeserver.org")
+        input(id = "password", class = "login-input", `type` = "password", onkeyupenter = register, placeholder = "password")
+        button(id = "register", class = "text-button", onclick = register):
+          text "Register"
 
 proc chatList: Vnode =
   result = buildHtml:
