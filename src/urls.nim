@@ -4,5 +4,4 @@ import
 
 const urlPatterns* = @[
   pattern("/", home),
-  pattern("/client", client),
 ]

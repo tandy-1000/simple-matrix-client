@@ -16,4 +16,3 @@ requires "matrix"
 task buildjs, "compile templates":
   exec "mkdir -p public public/js"
   exec "nim -o:public/js/client.js js src/client.nim"
-  exec "nim -o:public/js/home.js js src/home.nim"

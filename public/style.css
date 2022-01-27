@@ -1,7 +1,7 @@
 html, body {
   font: normal .95rem Inter, sans-serif;
   color: #111111;
-  background: #eeeeee;
+  background: #efefefef;
   padding: 0;
   margin: 0;
   overflow-x: hidden;
@@ -49,7 +49,7 @@ a {
   align-items: center;
 }
 
-#login-input {
+.login-input {
   background: none;
   border: 0.01rem solid #111111;
   outline: none;
@@ -60,6 +60,10 @@ a {
 
 .login-modal > h3 {
   margin-bottom: 1.25em;
+}
+
+#login {
+  margin-bottom: 0;
 }
 
 main {

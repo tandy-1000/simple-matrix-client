@@ -1,21 +1,71 @@
 import
-  pkg/karax/[karax, karaxdsl, vdom],
-  pkg/matrix,
+  pkg/karax/[karax, karaxdsl, vdom, kdom],
+  # std/asyncjs,
+  # pkg/matrix,
   shared
 
-# proc onMessageEnter(ev: Event; n: VNode) =
-#   echo "send message:" & $getElementById("message_input").value
+type
+  ClientView = enum
+    signinView, chatView
+  MenuView* = enum
+    menuView, loginView, registerView
 
 var
+  globalClientView = ClientView.signinView
+  globalMenuView = MenuView.loginView
   chats: seq[string]
   chatParticipants: seq[string]
   chatName: string
   messages: seq[string]
 
+
 # chats = @["Chat Group 1", "Chat Group 2"]
 # chatParticipants = @["user1", "user2", "user3"]
 # chatName = "chat"
 # messages = @["hello!", "hello."]
+
+proc login =
+  let
+    homeserver = $getElementById("homeserver").value
+    username = $getElementById("username").value
+    password = $getElementById("password").value
+  globalClientView = ClientView.chatView
+#   client = newAsyncMatrixClient(homeserver)
+#   let loginRes = client.login(username, password)
+#   client.setToken loginRes.accessToken
+
+proc register =
+  let
+    homeserver = $getElementById("homeserver").value
+    password = $getElementById("password").value
+  # client = newAsyncMatrixClient(homeserver)
+  # let regRes = await client.registerGuest(password)
+  # client.setToken regRes.accessToken
+
+proc signinModal*: Vnode =
+  result = buildHtml:
+    tdiv(class = "modal"):
+      case globalMenuView:
+      of MenuView.menuView:
+        button(id = "signin", class = "text-button"):
+          text "Sign-in"
+          proc onclick() = globalMenuView = MenuView.loginView
+        p:
+          text "or"
+        button(id = "register", class = "text-button"):
+          text "Register as Guest"
+          proc onclick() = globalMenuView = MenuView.registerView
+      of MenuView.loginView:
+        h3:
+          text "Login:"
+        input(id = "homeserver", class = "login-input", `type` = "text", onkeyupenter = login, placeholder = "https://homeserver.org")
+        input(id = "username", class = "login-input", `type` = "text", onkeyupenter = login, placeholder = "username")
+        input(id = "password", class = "login-input", `type` = "password", onkeyupenter = login, placeholder = "password")
+        button(id = "login", class = "text-button", onclick = login):
+          text "Login"
+      of MenuView.registerView:
+        h3:
+          text "Register:"
 
 proc chatList: Vnode =
   result = buildHtml:
@@ -62,12 +112,16 @@ proc chatInfo: Vnode =
 proc createDom: VNode =
   result = buildHtml:
     tdiv:
-      script(`type` = "text/javascript", src="/public/client.js")
       headerSection()
-      main:
-        chatList()
-        chatPane()
-        chatInfo()
+      case globalClientView:
+      of ClientView.signinView:
+        main:
+          signinModal()
+      of ClientView.chatView:
+        main:
+          chatList()
+          chatPane()
+          chatInfo()
       footerSection()
 
 setRenderer createDom
