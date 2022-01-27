@@ -36,8 +36,8 @@ proc chatPane: Vnode =
           p(id = "message"):
             text message
       tdiv(id = "message-box", class = "border-box"):
-        input(id = "message_input", `type` = "text")
-        button(id = "send"):
+        input(id = "message-input", `type` = "text")
+        button(id = "send-button"):
           text "➤"
 
 proc chatInfo: Vnode =
