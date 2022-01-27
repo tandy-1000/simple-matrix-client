@@ -14,6 +14,6 @@ requires "nim >= 1.7.1"
 requires "matrix"
 
 task buildjs, "compile templates":
-  exec "mkdir -p public"
-  exec "nim js src/client.nim"
-  exec "mv src/client.js public/"
+  exec "mkdir -p public public/js"
+  exec "nim -o:public/js/client.js js src/client.nim"
+  exec "nim -o:public/js/home.js js src/home.nim"
