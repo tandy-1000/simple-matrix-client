@@ -1,7 +1,7 @@
 html, body {
   font: normal .95rem Inter, sans-serif;
   color: #111111;
-  background: #FFFFFF;
+  background: #eeeeee;
   padding: 0;
   margin: 0;
   overflow-x: hidden;
@@ -37,6 +37,29 @@ a {
 
 .border-box {
   border: 0.01rem solid #111111;
+}
+
+.modal {
+  border: 0.01rem solid #111111;
+  border-radius: .5em;
+  margin: auto;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#login-input {
+  background: none;
+  border: 0.01rem solid #111111;
+  outline: none;
+  padding: .4rem;
+  margin: .5em 1em;
+  font: normal 1rem Inter, sans-serif;
+}
+
+.login-modal > h3 {
+  margin-bottom: 1.25em;
 }
 
 main {
@@ -160,12 +183,26 @@ p {
 }
 
 #chat {
-  border-bottom: 0.01rem solid #111;
+  border-bottom: 0.01rem solid #111111;
   padding: 0.8rem;
 }
 
 button {
-  background-color: #FFFFFF;
+  background-color: #eeeeee;
+  border: 0.01rem solid #111111;
+  font: normal 1rem Inter, sans-serif;
+}
+
+button:hover {
+  background-color: #e2e2e2;
+}
+
+.text-button {
+  margin: 1em;
+  padding: .5rem;
+}
+
+#send-button {
   border: none;
   border-left: 0.01rem solid #111111;
   padding: .8rem;
