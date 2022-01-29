@@ -1,6 +1,5 @@
 import
   pkg/karax/[karax, karaxdsl, vdom, kdom],
-  std/asyncjs,
   pkg/matrix,
   shared
 
@@ -13,7 +12,7 @@ type
 var
   globalClientView = ClientView.signinView
   globalMenuView = MenuView.menuView
-  client = newAsyncMatrixClient("")
+  client = newMatrixClient("")
   chats: seq[string]
   chatParticipants: seq[string]
   chatName: string
@@ -23,10 +22,10 @@ var
 # chatName = "chat"
 # messages = @["hello!", "hello."]
 
-proc loginMatrix(homeserver, username, password: string) {.async.} =
-  client = newAsyncMatrixClient(homeserver)
-  let loginRes = await client.login(username, password)
-  # client.setToken loginRes.accessToken
+proc loginMatrix(homeserver, username, password: string) =
+  client = newMatrixClient(homeserver)
+  let loginRes = client.login(username, password)
+  client.setToken loginRes.accessToken
 
 proc login =
   let
@@ -34,11 +33,11 @@ proc login =
     username = $getElementById("username").value
     password = $getElementById("password").value
   globalClientView = ClientView.chatView
-  discard loginMatrix(homeserver, username, password)
+  loginMatrix(homeserver, username, password)
 
-proc registerMatrix(homeserver, password: string) {.async.} =
-  client = newAsyncMatrixClient(homeserver)
-  let regRes = await client.registerGuest(password)
+proc registerMatrix(homeserver, password: string) =
+  client = newMatrixClient(homeserver)
+  let regRes = client.registerGuest(password)
   # client.setToken regRes.accessToken
 
 proc register =
@@ -46,7 +45,7 @@ proc register =
     homeserver = $getElementById("homeserver").value
     password = $getElementById("password").value
   globalClientView = ClientView.chatView
-  discard registerMatrix(homeserver, password)
+  registerMatrix(homeserver, password)
 
 proc signinModal*: Vnode =
   result = buildHtml:
