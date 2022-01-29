@@ -1,6 +1,6 @@
 import
   pkg/prologue,
-  pkg/prologue/middlewares/staticfile,
+  pkg/prologue/middlewares/[staticfile, cors],
   urls
 
 
@@ -15,5 +15,11 @@ let
 var app = newApp(settings = settings)
 
 app.use(staticFileMiddleware(env.get("staticDir")))
+app.use(CorsMiddleware(
+  allowOrigins = @[env.get("allowOrigins")],
+  allowHeaders = @[env.get("allowHeaders")],
+  allowMethods = @[env.get("allowMethods")],
+  )
+)
 app.addRoute(urls.urlPatterns, "")
 app.run()
