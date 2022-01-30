@@ -30,7 +30,7 @@ var
 proc setSyncView(res: Syncres) =
   syncResp = res
   globalClientView = ClientView.chat
-  # redraw()
+  redraw()
 
 proc initialSync {.async.} =
   globalMenuView = MenuView.syncing
