@@ -1,57 +1,73 @@
 import
   pkg/karax/[karax, karaxdsl, vdom, kdom],
   pkg/matrix,
+  std/asyncjs,
   shared
-
-type
-  ClientView = enum
-    signinView, chatView
-  MenuView* = enum
-    menuView, loginView, registerView
+from std/sugar import `=>`
 
 var
-  globalClientView = ClientView.signinView
-  globalMenuView = MenuView.menuView
-  client = newMatrixClient("")
   chats: seq[string]
   chatParticipants: seq[string]
   chatName: string
   messages: seq[string]
-# chats = @["Chat Group 1", "Chat Group 2"]
-# chatParticipants = @["user1", "user2", "user3"]
-# chatName = "chat"
-# messages = @["hello!", "hello."]
 
-proc loginMatrix(homeserver, username, password: string) =
-  client = newMatrixClient(homeserver)
-  let loginRes = client.login(username, password)
-  client.setToken loginRes.accessToken
+type
+  ClientView = enum
+    signin = "signin",
+    chat = "chat"
+  MenuView* = enum
+    menu = "menu",
+    loginView = "login",
+    registerView = "register",
+    syncing = "syncing"
+
+var
+  globalClientView = ClientView.signin
+  globalMenuView = MenuView.menu
+  client = newAsyncMatrixClient("")
+  syncResp: SyncRes
+
+proc setSyncView(res: Syncres) =
+  syncResp = res
+  globalClientView = ClientView.chat
+  # redraw()
+
+proc initialSync {.async.} =
+  globalMenuView = MenuView.syncing
+  redraw()
+  await client.sync()
+    .then((syncResp: SyncRes) => setSyncView syncResp)
 
 proc login =
+  proc loginMatrix(homeserver, username, password: string) {.async.} =
+    client = newAsyncMatrixClient(homeserver)
+    await client.login(username, password)
+      .then((loginRes: LoginRes) => client.setToken loginRes.accessToken)
+      .then(initialSync)
+
   let
     homeserver = $getElementById("homeserver").value
     username = $getElementById("username").value
     password = $getElementById("password").value
-  globalClientView = ClientView.chatView
-  loginMatrix(homeserver, username, password)
-
-proc registerMatrix(homeserver, password: string) =
-  client = newMatrixClient(homeserver)
-  let regRes = client.registerGuest(password)
-  # client.setToken regRes.accessToken
+  discard loginMatrix(homeserver, username, password)
 
 proc register =
+  proc registerMatrix(homeserver, password: string) {.async.} =
+    client = newAsyncMatrixClient(homeserver)
+    await client.registerGuest(password)
+      .then((regRes: RegisterRes) => client.setToken regRes.accessToken)
+      .then(initialSync)
+
   let
     homeserver = $getElementById("homeserver").value
     password = $getElementById("password").value
-  globalClientView = ClientView.chatView
-  registerMatrix(homeserver, password)
+  discard registerMatrix(homeserver, password)
 
 proc signinModal*: Vnode =
   result = buildHtml:
     tdiv(class = "modal"):
       case globalMenuView:
-      of MenuView.menuView:
+      of MenuView.menu:
         button(id = "signin", class = "text-button"):
           text "Sign-in"
           proc onclick() = globalMenuView = MenuView.loginView
@@ -63,7 +79,7 @@ proc signinModal*: Vnode =
       of MenuView.loginView:
         h3:
           text "Login:"
-        input(id = "homeserver", class = "login-input", `type` = "text", onkeyupenter = login, placeholder = "https://homeserver.org")
+        input(id = "homeserver", class = "login-input", `type` = "text", onkeyupenter = login, value = "https://matrix.org", placeholder = "https://homeserver.org")
         input(id = "username", class = "login-input", `type` = "text", onkeyupenter = login, placeholder = "username")
         input(id = "password", class = "login-input", `type` = "password", onkeyupenter = login, placeholder = "password")
         button(id = "login", class = "text-button", onclick = login):
@@ -71,10 +87,14 @@ proc signinModal*: Vnode =
       of MenuView.registerView:
         h3:
           text "Register as guest:"
-        input(id = "homeserver", class = "login-input", `type` = "text", onkeyupenter = register, placeholder = "https://homeserver.org")
+        input(id = "homeserver", class = "login-input", `type` = "text", onkeyupenter = register, value = "https://matrix.org", placeholder = "https://homeserver.org")
         input(id = "password", class = "login-input", `type` = "password", onkeyupenter = register, placeholder = "password")
         button(id = "register", class = "text-button", onclick = register):
           text "Register"
+      of MenuView.syncing:
+        h3:
+          text "Initial sync..."
+        img(id = "spinner", src = "/public/assets/spinner.svg")
 
 proc chatList: Vnode =
   result = buildHtml:
@@ -123,10 +143,10 @@ proc createDom: VNode =
     tdiv:
       headerSection()
       case globalClientView:
-      of ClientView.signinView:
+      of ClientView.signin:
         main:
           signinModal()
-      of ClientView.chatView:
+      of ClientView.chat:
         main:
           chatList()
           chatPane()
