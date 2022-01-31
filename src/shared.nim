@@ -1,5 +1,15 @@
 import pkg/karax/[karaxdsl, vdom]
 
+type
+  ClientView* = enum
+    signin = "signin",
+    chat = "chat"
+  MenuView* = enum
+    menu = "menu",
+    loginView = "login",
+    registerView = "register",
+    syncing = "syncing"
+
 proc headerSection*: Vnode =
   result = buildHtml:
     header:
