@@ -5,6 +5,7 @@ html, body {
   padding: 0;
   margin: 0;
   overflow-x: hidden;
+  scrollbar-color: #bfbfbf #d7d7d7;
 }
 
 *, ::after, ::before {
@@ -159,14 +160,32 @@ p {
 
 #messages {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: .5em;
+  flex-direction: column-reverse;
 }
 
-#message, #chat-participant {
+#inner-messages {
+  padding: .5em 1em .5em 1em;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+}
+
+.message-sender {
+  font-weight: 500;
+  margin-bottom: 0.5em;
+}
+
+.message-body {
+}
+
+blockquote {
+  background-color: #e8e8e8;
+  border-left: 0.01rem solid #111;
+  padding: .5em 1em;
+  margin: .5em .5em;
+}
+
+.message, #chat-participant {
+  display: flex;
   border: 0.01rem solid #111111;
   border-radius: 0.5em;
   box-sizing: border-box;
@@ -174,8 +193,20 @@ p {
   padding: 0.8rem;
 }
 
-#message {
-  margin: .5em;
+#chat-participant {
+  align-items: center;
+}
+
+.message {
+  flex-direction: column;
+  max-width: 22vw;
+  margin: .5em auto .5em 0em;
+  justify-content: right;
+}
+
+.message > p {
+  display: flex;
+  flex-shrink: 1;
 }
 
 #chat-participant {
@@ -184,10 +215,22 @@ p {
 
 #chats, #chat-information, #messages {
   overflow-y: auto;
+  height: 0px;
+  flex-grow: 1;
 }
 
-#chat {
+.self-sent {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.chat {
   border-bottom: 0.01rem solid #111111;
+  padding: 0.8rem;
+}
+
+.last-chat {
+  border-bottom: none;
   padding: 0.8rem;
 }
 
