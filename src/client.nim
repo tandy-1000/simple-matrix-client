@@ -4,7 +4,7 @@ import
   pkg/nodejs/jsindexeddb,
   std/[asyncjs, tables, json, jsffi, enumerate],
   shared, indexeddb
-from std/sugar import `=>`
+from std/sugar import `=>`, collect
 
 const
   dbName = "simple-matrix-client"
@@ -12,15 +12,17 @@ const
 
 var
   db: IndexedDB = newIndexedDB()
-  storedUsers: seq[User]
+  client = newAsyncMatrixClient(homeserver = homeserver)
   globalClientView = ClientView.signin
   globalMenuView = MenuView.menu
-  chatInfoView: InfoView = InfoView.none
-  client = newAsyncMatrixClient(homeserver, token)
+  chatInfoView: ChatInfoView = ChatInfoView.noInfo
+  chatPaneView: ChatPaneView = ChatPaneView.noChat
+  chatListView: ChatListView = ChatListView.skeleton
   currentUserId: string
   syncResp: SyncRes
   roomStateResp: RoomStateRes
-  selectedChat: string
+  storedUsers: Table[cstring, User]
+  selectedRoom: string
 
 proc setSyncView(res: Syncres) =
   syncResp = res
@@ -75,8 +77,7 @@ proc renderLogin*: Vnode =
         text "Login"
 
 proc validate(homeserver, token: string) {.async.} =
-  client = newAsyncMatrixClient(homeserver)
-  client.setToken token
+  client = newAsyncMatrixClient(homeserver, token)
   try:
     let whoAmIResp = await client.whoAmI()
     discard initialSync()
@@ -85,18 +86,21 @@ proc validate(homeserver, token: string) {.async.} =
 
 proc getUsers {.async.} =
   let objStore = await indexeddb.getAll(db, "user".cstring)
-  storedUsers = to(objStore, seq[User])
+  storedUsers = collect:
+    for user in to(objStore, seq[User]): {user.userId: user}
   redraw()
 
 proc renderMenu*: Vnode =
-  if storedUsers == @[]:
+  if storedUsers.len == 0:
     discard getUsers()
   result = buildHtml:
     tdiv(class = "modal"):
-      for user in storedUsers:
-        button(id = kstring(user.userId), class = "signed-in-user"):
-          text user.userId
-          proc onclick() = discard validate($user.homeserver, $user.token)
+      for userId, user in storedUsers.pairs:
+        button(id = kstring(userId), class = "signed-in-user"):
+          text userId
+          proc onclick(ev: kdom.Event; n: VNode) =
+            let user = storedUsers[n.id]
+            discard validate($user.homeserver, $user.token)
 
       button(id = "signin", class = "text-button"):
         text "Sign-in"
@@ -116,13 +120,6 @@ proc renderRegister*: Vnode =
       input(id = "password", class = "login-input", `type` = "password", onkeyupenter = register, placeholder = "password")
       button(id = "register", class = "text-button", onclick = register):
         text "Register"
-
-proc renderLoader*(message: string): Vnode =
-  result = buildHtml:
-    tdiv(class = "modal"):
-      h3:
-        text message
-      img(id = "spinner", src = "/public/assets/spinner.svg")
 
 proc signinModal: Vnode =
   result = buildHtml:
@@ -166,38 +163,34 @@ proc renderRoomState(roomStateResp: RoomStateRes): Vnode =
           text chatName
       renderRoomMembers(members)
 
-proc saveRoomState(res: RoomStateRes) =
-  roomStateResp = res
-  chatInfoView = InfoView.some
-  redraw()
-
 proc getMatrixRoomState(roomId: string) {.async.} =
-  await client.getRoomState(roomId)
-    .then((resp: RoomStateRes) => (saveRoomState resp))
+  let res = await client.getRoomState(roomId)
+  roomStateResp = res
+  chatInfoView = ChatInfoView.loaded
+  redraw()
 
 proc chatInfo*(roomId: string = ""): Vnode =
   if roomId == "":
-    chatInfoView = InfoView.none
+    chatInfoView = ChatInfoView.noInfo
   else:
-    if roomStateResp == RoomStateRes():
-      chatInfoView = InfoView.loading
+    if roomStateResp == RoomStateRes() or roomStateResp.roomId != selectedRoom:
+      chatInfoView = ChatInfoView.loading
       discard getMatrixRoomState(roomId)
   result = buildHtml:
     tdiv(id = "info-pane", class = "col"):
       h3(id = "chat-header"):
         text "Chat Information"
       case chatInfoView:
-      of InfoView.none:
-        tdiv(class = "modal"):
-          h3:
-            text "No chat selected."
-      of InfoView.loading:
+      of ChatInfoView.noInfo:
+        renderNoneSelected()
+      of ChatInfoView.loading:
         renderLoader("Loading...")
-      of InfoView.some:
+      of ChatInfoView.loaded:
         renderRoomState(roomStateResp)
 
 proc onChatClick(ev: kdom.Event; n: VNode) =
-  selectedChat = $n.id
+  selectedRoom = $n.id
+  chatPaneView = ChatPaneView.selected
   redraw()
 
 proc renderJoinedRooms(joinedRooms: Table[string, JoinedRoom]): Vnode =
@@ -212,12 +205,31 @@ proc renderJoinedRooms(joinedRooms: Table[string, JoinedRoom]): Vnode =
           button(class = "chat", id = kstring(id), onclick = onChatClick):
             text id
 
+proc chatPane*(userId: string, roomId: string): Vnode =
+  result = buildHtml:
+    tdiv(id = "chat-pane", class = "col"):
+      case chatPaneView:
+      of ChatPaneView.noChat:
+        renderNoneSelected()
+      of ChatPaneView.selected:
+        let joinedRoom = syncResp.rooms.join[roomId]
+        renderChatMessages(userId, joinedRoom)
+      tdiv(id = "message-box", class = "border-box"):
+        input(id = "message-input", `type` = "text")
+        button(id = "send-button"):
+          text "➤"
+
 proc chatList*(syncResp: SyncRes): Vnode =
   result = buildHtml:
     tdiv(id = "list-pane", class = "col"):
       h3(id = "chat-header"):
         text "Chats"
-      renderJoinedRooms(syncResp.rooms.join)
+      case chatListView:
+      of ChatListView.skeleton:
+        renderJoinedRooms(syncResp.rooms.join)
+      of ChatListView.full:
+        # TODO: properly render rooms with real names
+        renderJoinedRooms(syncResp.rooms.join)
 
 proc createDom: VNode =
   result = buildHtml:
@@ -230,8 +242,8 @@ proc createDom: VNode =
       of ClientView.chat:
         main:
           chatList(syncResp)
-          chatPane(currentUserId, syncResp.rooms.join[selectedChat])
-          chatInfo(selectedChat)
+          chatPane(currentUserId, selectedRoom)
+          chatInfo(selectedRoom)
       footerSection()
 
 setRenderer createDom

@@ -12,12 +12,18 @@ type
     loginView = "login",
     registerView = "register",
     syncing = "syncing"
-  InfoView* = enum
-    none = "none",
+  ChatListView* = enum
+    skeleton = "skeleton",
+    full = "full"
+  ChatPaneView* = enum
+    noChat = "none",
+    selected = "selected"
+  ChatInfoView* = enum
+    noInfo = "noInfo",
     loading = "loading",
-    some = "some"
+    loaded = "loaded"
 
-proc renderChatMessages(userId: string, joinedRoom: JoinedRoom): Vnode =
+proc renderChatMessages*(userId: string, joinedRoom: JoinedRoom): Vnode =
   var
     content: JsonNode
     body: string
@@ -42,14 +48,18 @@ proc renderChatMessages(userId: string, joinedRoom: JoinedRoom): Vnode =
               else:
                 verbatim body
 
-proc chatPane*(userId: string, joinedRoom: JoinedRoom): Vnode =
+proc renderNoneSelected*: Vnode =
   result = buildHtml:
-    tdiv(id = "chat-pane", class = "col"):
-      renderChatMessages(userId, joinedRoom)
-      tdiv(id = "message-box", class = "border-box"):
-        input(id = "message-input", `type` = "text")
-        button(id = "send-button"):
-          text "➤"
+    tdiv(class = "modal"):
+      h3:
+        text "No chat selected."
+
+proc renderLoader*(message: string): Vnode =
+  result = buildHtml:
+    tdiv(class = "modal"):
+      h3:
+        text message
+      img(id = "spinner", src = "/public/assets/spinner.svg")
 
 proc headerSection*: Vnode =
   result = buildHtml:

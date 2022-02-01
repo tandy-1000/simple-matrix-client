@@ -123,12 +123,13 @@ h2, h3, h4 {
 #info-pane {
   flex: 25%;
 }
-#info-pane > .modal {
-  margin: 4em;
-}
 
 #chat-pane {
   border: none;
+}
+
+#chat-pane > .modal, #info-pane > .modal {
+  margin: auto;
 }
 
 #chat-header {
