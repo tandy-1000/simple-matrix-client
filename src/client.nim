@@ -142,7 +142,7 @@ proc renderRoomMembers(members: seq[StateEvent]): Vnode =
       tdiv(class = "list"):
         for member in members:
           p(id = "chat-participant"):
-            text member.content["displayname"].getStr()
+            text member.content{"displayname"}.getStr()
 
 proc renderRoomState(roomStateResp: RoomStateRes): Vnode =
   var
@@ -154,7 +154,7 @@ proc renderRoomState(roomStateResp: RoomStateRes): Vnode =
       if stateEv.`type` == "m.room.member":
         members &= stateEv
       elif stateEv.`type` == "m.room.name":
-        chatName = stateEv.content["name"].getStr()
+        chatName = stateEv.content{"name"}.getStr()
 
   result = buildHtml:
     tdiv(id = "chat-information"):
