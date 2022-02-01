@@ -1,5 +1,5 @@
 import
-  pkg/karax/[karaxdsl, vdom],
+  pkg/karax/[kbase, karaxdsl, vdom],
   pkg/matrix,
   std/[tables, enumerate, json]
 
@@ -19,11 +19,11 @@ proc renderJoinedRooms(joinedRooms: Table[string, JoinedRoom]): Vnode =
     tdiv(id = "chats", class = "list"):
       for i, (id, room) in enumerate joinedRooms.pairs:
         if i == joinedRooms.len - 1:
-          tdiv(class = "last-chat", id = id):
+          tdiv(class = "last-chat", id = kstring(id)):
             p:
               text id
         else:
-          tdiv(class = "chat", id = id):
+          tdiv(class = "chat", id = kstring(id)):
             p:
               text id
 
@@ -51,7 +51,7 @@ proc renderChatMessages(userId: string, joinedRoom: JoinedRoom): Vnode =
           if event.sender == userId:
             messageClass &= " self-sent"
             echo messageClass
-          tdiv(id = event.eventId, class = messageClass):
+          tdiv(id = kstring(event.eventId), class = kstring(messageClass)):
             p(class = "message-sender"):
               text event.sender
             p(class = "message-body"):
