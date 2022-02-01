@@ -40,14 +40,24 @@ a {
   border: 0.01rem solid #111111;
 }
 
+.container {
+  margin: auto;
+}
+
 .modal {
   border: 0.01rem solid #111111;
   border-radius: .5em;
-  margin: auto;
   padding: 2em;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.signed-in-user {
+  border: 0.01rem solid #111111;
+  border-radius: .5em;
+  margin: 1em;
+  padding: 1em;
 }
 
 .login-input {
@@ -113,6 +123,9 @@ h2, h3, h4 {
 #info-pane {
   flex: 25%;
 }
+#info-pane > .modal {
+  margin: 4em;
+}
 
 #chat-pane {
   border: none;
@@ -137,6 +150,7 @@ h2, h3, h4 {
 
 .heading {
   margin: 1.5em auto 0em;
+  font-weight: 500;
 }
 
 input {
@@ -224,19 +238,22 @@ blockquote {
   margin-right: 0;
 }
 
+.chat, .last-chat {
+  text-align: left;
+  padding: 0.8rem;
+}
+
 .chat {
   border-bottom: 0.01rem solid #111111;
-  padding: 0.8rem;
 }
 
 .last-chat {
   border-bottom: none;
-  padding: 0.8rem;
 }
 
 button {
   background-color: #eeeeee;
-  border: 0.01rem solid #111111;
+  border: none;
   font: normal 1rem Inter, sans-serif;
 }
 
@@ -244,9 +261,11 @@ button:hover {
   background-color: #e2e2e2;
 }
 
+
 .text-button {
   margin: 1em;
   padding: .5rem;
+  border: 0.01rem solid #111111;
 }
 
 #send-button {

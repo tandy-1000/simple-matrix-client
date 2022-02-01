@@ -1,7 +1,7 @@
 import
   pkg/karax/[kbase, karaxdsl, vdom],
   pkg/matrix,
-  std/[tables, enumerate, json]
+  std/json
 
 type
   ClientView* = enum
@@ -12,27 +12,10 @@ type
     loginView = "login",
     registerView = "register",
     syncing = "syncing"
-
-proc renderJoinedRooms(joinedRooms: Table[string, JoinedRoom]): Vnode =
-  # TODO: Add code to detect whether there is an active overflow and set the last-chat class
-  result = buildHtml:
-    tdiv(id = "chats", class = "list"):
-      for i, (id, room) in enumerate joinedRooms.pairs:
-        if i == joinedRooms.len - 1:
-          tdiv(class = "last-chat", id = kstring(id)):
-            p:
-              text id
-        else:
-          tdiv(class = "chat", id = kstring(id)):
-            p:
-              text id
-
-proc chatList*(syncResp: SyncRes): Vnode =
-  result = buildHtml:
-    tdiv(id = "list-pane", class = "col"):
-      h3(id = "chat-header"):
-        text "Chats"
-      renderJoinedRooms(syncResp.rooms.join)
+  InfoView* = enum
+    none = "none",
+    loading = "loading",
+    some = "some"
 
 proc renderChatMessages(userId: string, joinedRoom: JoinedRoom): Vnode =
   var
@@ -47,10 +30,9 @@ proc renderChatMessages(userId: string, joinedRoom: JoinedRoom): Vnode =
           content = event.content
           body = content{"formatted_body"}.getStr()
           if body == "":
-            body = content["body"].getStr()
+            body = content{"body"}.getStr()
           if event.sender == userId:
             messageClass &= " self-sent"
-            echo messageClass
           tdiv(id = kstring(event.eventId), class = kstring(messageClass)):
             p(class = "message-sender"):
               text event.sender
@@ -68,25 +50,6 @@ proc chatPane*(userId: string, joinedRoom: JoinedRoom): Vnode =
         input(id = "message-input", `type` = "text")
         button(id = "send-button"):
           text "➤"
-
-proc chatInfo*(chatParticipants: seq[string] = @[], chatName: string = ""): Vnode =
-  result = buildHtml:
-    tdiv(id = "info-pane", class = "col"):
-      h3(id = "chat-header"):
-        text "Chat Information"
-      if chatParticipants.len != 0:
-        tdiv(id = "chat-information"):
-          tdiv(id = "chat-profile"):
-            h4(id = "chat-name"):
-              text chatName
-          tdiv(id = "members"):
-            p(class = "heading"):
-              text "Members:"
-            tdiv(class = "list"):
-              for chatParticipant in chatParticipants:
-                tdiv(id = "chat-participant"):
-                  p:
-                    text chatParticipant
 
 proc headerSection*: Vnode =
   result = buildHtml:
