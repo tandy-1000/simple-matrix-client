@@ -25,16 +25,27 @@ var
   storedUsers: Table[cstring, User]
   selectedRoom: string
 
-proc setSyncView(res: Syncres) =
-  syncResp = res
-  globalClientView = ClientView.chat
-  redraw()
+proc setTimeoutAsync(ms: int): Future[void] =
+  let promise = newPromise() do (res: proc(): void):
+    discard setTimeout(res, ms)
+  return promise
 
-proc initialSync() {.async.} =
+proc longSync {.async.} =
+  try:
+    syncResp = await client.sync(since = syncResp.nextBatch)
+    await setTimeoutAsync(1000)
+      .then(longSync)
+  except MatrixError:
+    await setTimeoutAsync(1000)
+      .then(longSync)
+
+proc initialSync {.async.} =
   globalMenuView = MenuView.syncing
   redraw()
-  await client.sync()
-    .then((syncResp: SyncRes) => setSyncView syncResp)
+  syncResp = await client.sync()
+  globalClientView = ClientView.chat
+  redraw()
+  # discard longSync()
 
 proc login =
   proc loginMatrix(homeserver, username, password: string) {.async.} =
@@ -64,6 +75,7 @@ proc register =
   let
     homeserver = $getElementById("homeserver").value
     password = $getElementById("password").value
+
   discard registerMatrix(homeserver, password)
 
 proc renderLogin*: Vnode =
@@ -187,7 +199,7 @@ proc chatPane*(userId: string, roomId: string): Vnode =
         let joinedRoom = syncResp.rooms.join[roomId]
         renderChatMessages(userId, joinedRoom)
       tdiv(id = "message-box", class = "border-box"):
-        input(id = "message-input", `type` = "text")
+        tdiv(id = "message-input", autofocus = "autofocus", contenteditable = "true")
         button(id = "send-button"):
           text "➤"
 

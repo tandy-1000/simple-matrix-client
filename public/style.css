@@ -149,6 +149,18 @@ h2, h3, h4 {
   border-top: 0.01rem solid #111111;
 }
 
+#message-input {
+  resize: none;
+  background: none;
+  border: none;
+  outline: none;
+  padding: .8rem;
+  font: normal 1rem Inter, sans-serif;
+  flex-grow: 1;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
 .heading {
   margin: 1.5em auto 0em;
   font-weight: 500;
