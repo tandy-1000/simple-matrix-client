@@ -4,6 +4,7 @@ on:
     paths:
       - ".github/workflows/*"
       - "src/*"
+      - "public/*"
       - "simple_matrix_client.nimble"
 
 jobs:
