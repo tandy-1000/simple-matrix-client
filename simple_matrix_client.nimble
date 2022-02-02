@@ -5,7 +5,7 @@ author        = "tandy"
 description   = "A simple Matrix.org client"
 license       = "AGPL-3.0-or-later"
 srcDir        = "src"
-bin           = @["client"]
+bin           = @["server"]
 
 
 # Dependencies
@@ -14,7 +14,6 @@ requires "nim >= 1.7.1"
 requires "matrix"
 requires "nodejs"
 requires "karax"
-
 
 task buildjs, "compile templates":
   exec "mkdir -p public public/js"
