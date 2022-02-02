@@ -12,7 +12,7 @@ bin           = @["server"]
 
 requires "nim >= 1.7.1"
 requires "matrix"
-requires "nodejs"
+requires "https://github.com/tandy-1000/nodejs/"
 requires "karax"
 
 task buildjs, "compile templates":
