@@ -193,7 +193,7 @@ proc renderJoinedRooms(joinedRooms: Table[string, JoinedRoom]): Vnode =
 
 proc send(ev: kdom.Event; n: VNode) =
   proc matrixSend(message: string) {.async.} =
-    let res = await client.sendMessage(eventType = "m.room.message", roomId = selectedRoom, txnId = $getTime(), body = message, msgtype = MessageType.`m.text`)
+    discard await client.sendMessage(eventType = "m.room.message", roomId = selectedRoom, txnId = $getTime(), body = message, msgtype = MessageType.`m.text`)
   let message = $getElementById("message-input").textContent
   getElementById("message-input").textContent = ""
   discard matrixSend(message)
