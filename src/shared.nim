@@ -63,28 +63,27 @@ proc renderRoomState*(events: seq[StateEvent]): Vnode =
 
 proc renderChatMessages*(userId: string, joinedRoom: JoinedRoom): Vnode =
   var
-    content: JsonNode
     body: string
     messageClass: string
   result = buildHtml:
     tdiv(id = "messages"):
       tdiv(id = "inner-messages"):
         for event in joinedRoom.timeline.events:
-          messageClass = "message"
-          content = event.content
-          body = content{"formatted_body"}.getStr()
-          if body == "":
-            body = content{"body"}.getStr()
-          if event.sender == userId:
-            messageClass &= " self-sent"
-          tdiv(id = kstring(event.eventId), class = kstring(messageClass)):
-            p(class = "message-sender"):
-              text event.sender
-            p(class = "message-body"):
-              if body == "":
-                text body
-              else:
-                verbatim body
+          if event.`type` == "m.room.message":
+            messageClass = "message"
+            body = event.content{"formatted_body"}.getStr()
+            if body == "":
+              body = event.content{"body"}.getStr()
+            if event.sender == userId:
+              messageClass &= " self-sent"
+            tdiv(id = kstring(event.eventId), class = kstring(messageClass)):
+              p(class = "message-sender"):
+                text event.sender
+              p(class = "message-body"):
+                if body == "":
+                  text body
+                else:
+                  verbatim body
 
 proc renderNoneSelected*: Vnode =
   result = buildHtml:
