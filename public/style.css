@@ -251,13 +251,14 @@ blockquote {
   margin-right: 0;
 }
 
-.chat, .last-chat {
+.chat{
   text-align: left;
   padding: 0.8rem;
+  border-bottom: 0.01rem solid #111111;
 }
 
-.chat {
-  border-bottom: 0.01rem solid #111111;
+.chat:focus {
+  background-color: #e2e2e2;
 }
 
 .last-chat {

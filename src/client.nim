@@ -175,6 +175,7 @@ proc chatInfo*(roomId: string = ""): Vnode =
 
 proc onChatClick(ev: kdom.Event; n: VNode) =
   selectedRoom = $n.id
+
   chatPaneView = ChatPaneView.selected
   redraw()
 
@@ -184,7 +185,7 @@ proc renderJoinedRooms(joinedRooms: Table[string, JoinedRoom]): Vnode =
     tdiv(id = "chats", class = "list"):
       for i, (id, room) in enumerate joinedRooms.pairs:
         if i == joinedRooms.len - 1:
-          button(class = "last-chat", id = kstring(id), onclick = onChatClick):
+          button(class = "chat last-chat", id = kstring(id), onclick = onChatClick):
             text id
         else:
           button(class = "chat", id = kstring(id), onclick = onChatClick):
@@ -193,7 +194,7 @@ proc renderJoinedRooms(joinedRooms: Table[string, JoinedRoom]): Vnode =
 proc send(ev: kdom.Event; n: VNode) =
   proc matrixSend(message: string) {.async.} =
     let res = await client.sendMessage(eventType = "m.room.message", roomId = selectedRoom, txnId = $getTime(), body = message, msgtype = MessageType.`m.text`)
-  let message = getElementById("message-input").textContent
+  let message = $getElementById("message-input").textContent
   discard matrixSend(message)
 
 proc chatPane*(userId: string, roomId: string): Vnode =
