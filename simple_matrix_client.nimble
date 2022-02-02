@@ -11,7 +11,7 @@ bin           = @["server"]
 # Dependencies
 
 requires "nim >= 1.7.1"
-requires "matrix"
+requires "https://github.com/tandy-1000/matrix-nim-sdk"
 requires "https://github.com/tandy-1000/nodejs/"
 requires "karax"
 
