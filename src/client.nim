@@ -2,7 +2,7 @@ import
   pkg/karax/[karax, kbase, karaxdsl, vdom, kdom],
   pkg/matrix,
   pkg/nodejs/jsindexeddb,
-  std/[asyncjs, tables, json, jsffi, enumerate],
+  std/[asyncjs, tables, json, jsffi, enumerate, times],
   shared
 from std/sugar import `=>`, collect
 
@@ -93,6 +93,7 @@ proc validate(homeserver, token: string) {.async.} =
   client = newAsyncMatrixClient(homeserver, token)
   try:
     let whoAmIResp = await client.whoAmI()
+    currentUserId = whoAmIResp.userId
     discard initialSync()
   except MatrixError:
     echo "bad token!"
@@ -189,6 +190,12 @@ proc renderJoinedRooms(joinedRooms: Table[string, JoinedRoom]): Vnode =
           button(class = "chat", id = kstring(id), onclick = onChatClick):
             text id
 
+proc send(ev: kdom.Event; n: VNode) =
+  proc matrixSend(message: string) {.async.} =
+    let res = await client.sendMessage(eventType = "m.room.message", roomId = selectedRoom, txnId = $getTime(), body = message, msgtype = MessageType.`m.text`)
+  let message = getElementById("message-input").textContent
+  discard matrixSend(message)
+
 proc chatPane*(userId: string, roomId: string): Vnode =
   result = buildHtml:
     tdiv(id = "chat-pane", class = "col"):
@@ -199,8 +206,8 @@ proc chatPane*(userId: string, roomId: string): Vnode =
         let joinedRoom = syncResp.rooms.join[roomId]
         renderChatMessages(userId, joinedRoom)
       tdiv(id = "message-box", class = "border-box"):
-        tdiv(id = "message-input", autofocus = "autofocus", contenteditable = "true")
-        button(id = "send-button"):
+        tdiv(id = "message-input", autofocus = "autofocus", contenteditable = "true", onkeyupenter = send)
+        button(id = "send-button", onclick = send):
           text "➤"
 
 proc chatList*(syncResp: SyncRes): Vnode =
