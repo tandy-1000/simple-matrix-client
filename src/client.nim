@@ -195,6 +195,7 @@ proc send(ev: kdom.Event; n: VNode) =
   proc matrixSend(message: string) {.async.} =
     let res = await client.sendMessage(eventType = "m.room.message", roomId = selectedRoom, txnId = $getTime(), body = message, msgtype = MessageType.`m.text`)
   let message = $getElementById("message-input").textContent
+  getElementById("message-input").textContent = ""
   discard matrixSend(message)
 
 proc chatPane*(userId: string, roomId: string): Vnode =
@@ -239,3 +240,4 @@ proc createDom: VNode =
       footerSection()
 
 setRenderer createDom
+# setForeignNodeId "message-input"
