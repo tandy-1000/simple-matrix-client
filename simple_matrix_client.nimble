@@ -12,6 +12,9 @@ bin           = @["client"]
 
 requires "nim >= 1.7.1"
 requires "matrix"
+requires "nodejs"
+requires "karax"
+
 
 task buildjs, "compile templates":
   exec "mkdir -p public public/js"
