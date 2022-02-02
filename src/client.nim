@@ -175,7 +175,6 @@ proc chatInfo*(roomId: string = ""): Vnode =
 
 proc onChatClick(ev: kdom.Event; n: VNode) =
   selectedRoom = $n.id
-
   chatPaneView = ChatPaneView.selected
   redraw()
 
@@ -240,4 +239,3 @@ proc createDom: VNode =
       footerSection()
 
 setRenderer createDom
-# setForeignNodeId "message-input"
