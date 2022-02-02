@@ -96,7 +96,7 @@ proc renderLoader*(message: string): Vnode =
     tdiv(class = "modal"):
       h3:
         text message
-      img(id = "spinner", src = "/assets/spinner.svg")
+      img(id = "spinner", src = "/simple-matrix-client/assets/spinner.svg")
 
 proc headerSection*: Vnode =
   result = buildHtml:
