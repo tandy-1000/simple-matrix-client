@@ -12,7 +12,7 @@ bin           = @["server"]
 
 requires "nim >= 1.7.1"
 requires "https://github.com/tandy-1000/matrix-nim-sdk#head"
-requires "https://github.com/tandy-1000/nodejs/#head"
+requires "https://github.com/juancarlospaco/nodejs/#head"
 requires "karax"
 
 task buildjs, "compile templates":
