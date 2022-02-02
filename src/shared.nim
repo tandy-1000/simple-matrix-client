@@ -1,7 +1,8 @@
 import
   pkg/karax/[kbase, karaxdsl, vdom],
   pkg/matrix,
-  std/json
+  pkg/nodejs/jsindexeddb,
+  std/[asyncjs, json, jsffi]
 
 type
   ClientView* = enum
@@ -22,6 +23,43 @@ type
     noInfo = "noInfo",
     loading = "loading",
     loaded = "loaded"
+
+  User* = object
+    userId*: cstring
+    homeserver*: cstring
+    token*: cstring
+
+proc storeToken*(db: IndexedDB, userId, homeserver, token: string = "", options: IDBOptions) {.async.} =
+  discard await put(db, "user".cstring, toJs User(userId: userId.cstring, homeserver: homeserver.cstring, token: token.cstring), options)
+
+proc renderRoomMembers*(members: seq[StateEvent]): Vnode =
+  result = buildHtml:
+    tdiv(id = "members"):
+      p(class = "heading"):
+        text "Members:"
+      tdiv(class = "list"):
+        for member in members:
+          p(id = "chat-participant"):
+            text member.content{"displayname"}.getStr()
+
+proc renderRoomState*(events: seq[StateEvent]): Vnode =
+  var
+    chatName: string
+    members: seq[StateEvent]
+
+  if events.len != 0:
+    for stateEv in events:
+      if stateEv.`type` == "m.room.member":
+        members &= stateEv
+      elif stateEv.`type` == "m.room.name":
+        chatName = stateEv.content{"name"}.getStr()
+
+  result = buildHtml:
+    tdiv(id = "chat-information"):
+      tdiv(id = "chat-profile"):
+        h4(id = "chat-name"):
+          text chatName
+      renderRoomMembers(members)
 
 proc renderChatMessages*(userId: string, joinedRoom: JoinedRoom): Vnode =
   var

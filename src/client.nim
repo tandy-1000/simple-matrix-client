@@ -3,7 +3,7 @@ import
   pkg/matrix,
   pkg/nodejs/jsindexeddb,
   std/[asyncjs, tables, json, jsffi, enumerate],
-  shared, indexeddb
+  shared
 from std/sugar import `=>`, collect
 
 const
@@ -12,6 +12,7 @@ const
 
 var
   db: IndexedDB = newIndexedDB()
+  dbOptions = IDBOptions(keyPath: "userId")
   client = newAsyncMatrixClient(homeserver = homeserver)
   globalClientView = ClientView.signin
   globalMenuView = MenuView.menu
@@ -42,7 +43,7 @@ proc login =
     currentUserId = loginRes.userId
     client.setToken loginRes.accessToken
     discard initialSync()
-    discard db.storeToken(currentUserId, homeserver, loginRes.accessToken)
+    discard db.storeToken(currentUserId, homeserver, loginRes.accessToken, dbOptions)
 
   let
     homeserver = $getElementById("homeserver").value
@@ -58,7 +59,7 @@ proc register =
     currentUserId = regRes.userId
     client.setToken regRes.accessToken
     discard initialSync()
-    discard db.storeToken(currentUserId, homeserver, regRes.accessToken)
+    discard db.storeToken(currentUserId, homeserver, regRes.accessToken, dbOptions)
 
   let
     homeserver = $getElementById("homeserver").value
@@ -85,7 +86,7 @@ proc validate(homeserver, token: string) {.async.} =
     echo "bad token!"
 
 proc getUsers {.async.} =
-  let objStore = await indexeddb.getAll(db, "user".cstring)
+  let objStore = await getAll(db, "user".cstring, dbOptions)
   storedUsers = collect:
     for user in to(objStore, seq[User]): {user.userId: user}
   redraw()
@@ -134,35 +135,6 @@ proc signinModal: Vnode =
       of MenuView.syncing:
         renderLoader("Initial sync...")
 
-proc renderRoomMembers(members: seq[StateEvent]): Vnode =
-  result = buildHtml:
-    tdiv(id = "members"):
-      p(class = "heading"):
-        text "Members:"
-      tdiv(class = "list"):
-        for member in members:
-          p(id = "chat-participant"):
-            text member.content{"displayname"}.getStr()
-
-proc renderRoomState(roomStateResp: RoomStateRes): Vnode =
-  var
-    chatName: string
-    members: seq[StateEvent]
-
-  if roomStateResp.events.len != 0:
-    for stateEv in roomStateResp.events:
-      if stateEv.`type` == "m.room.member":
-        members &= stateEv
-      elif stateEv.`type` == "m.room.name":
-        chatName = stateEv.content{"name"}.getStr()
-
-  result = buildHtml:
-    tdiv(id = "chat-information"):
-      tdiv(id = "chat-profile"):
-        h4(id = "chat-name"):
-          text chatName
-      renderRoomMembers(members)
-
 proc getMatrixRoomState(roomId: string) {.async.} =
   let res = await client.getRoomState(roomId)
   roomStateResp = res
@@ -186,7 +158,7 @@ proc chatInfo*(roomId: string = ""): Vnode =
       of ChatInfoView.loading:
         renderLoader("Loading...")
       of ChatInfoView.loaded:
-        renderRoomState(roomStateResp)
+        renderRoomState(roomStateResp.events)
 
 proc onChatClick(ev: kdom.Event; n: VNode) =
   selectedRoom = $n.id
