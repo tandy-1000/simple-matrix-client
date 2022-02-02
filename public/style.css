@@ -257,7 +257,7 @@ blockquote {
   border-bottom: 0.01rem solid #111111;
 }
 
-.chat:focus {
+.chat:active, .chat:focus {
   background-color: #e2e2e2;
 }
 
