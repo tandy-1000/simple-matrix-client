@@ -27200,7 +27200,7 @@ function renderLoader_587202774(message_587202775) {
     F.line = 99;
     tmp_587202779.id = "spinner";
     F.line = 99;
-    setAttr_637534760(tmp_587202779, "src", "/public/assets/spinner.svg");
+    setAttr_637534760(tmp_587202779, "src", "simple-matrix-client/assets/spinner.svg");
     F.line = 99;
     add_637534834(tmp_587202777, tmp_587202779);
     result_587202776 = tmp_587202777;
