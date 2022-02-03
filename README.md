@@ -9,9 +9,13 @@ Features:
  - Guest registration
 
 TODO:
+  - [x] Indicate what chat is currently selected
+  - [x] Send messages
+  - [x] Store login token in IndexedDB:
+  - [x] Long-polling for Sync API
+  - [ ] Setup a data store for sync and chat data
   - [ ] Get chat name for chat list
-  - [ ] Store in IndexedDB:
-    - [x] login token
-    - [ ] sync data
-    - [ ] room states
+  - [ ] Display message for encrypted chats
+  - [ ] Properly name DMs in chat information pane
   - [ ] Make it faster on large accounts
+  - [ ] Make the UI more mobile friendly
