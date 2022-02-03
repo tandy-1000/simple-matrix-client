@@ -1,4 +1,4 @@
 import pkg/prologue
 
 proc home*(ctx: Context) {.async.} =
-  resp readFile("public/html/index.html")
+  resp readFile("public/index.html")
