@@ -69,7 +69,7 @@ a {
   font: normal 1rem Inter, sans-serif;
 }
 
-.modal > h3 {
+.modal-header {
   margin-bottom: 1.25em;
 }
 

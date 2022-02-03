@@ -66,7 +66,7 @@ proc login =
 proc renderLogin*: Vnode =
   result = buildHtml:
     tdiv(class = "modal"):
-      h3:
+      h3(class = "modal-header"):
         text "Login:"
       input(id = "homeserver", class = "login-input", `type` = "text", onkeyupenter = login, value = "https://matrix.org", placeholder = "https://homeserver.org")
       input(id = "username", class = "login-input", `type` = "text", onkeyupenter = login, placeholder = "username")
@@ -93,7 +93,7 @@ proc register =
 proc renderRegister*: Vnode =
   result = buildHtml:
     tdiv(class = "modal"):
-      h3:
+      h3(class = "modal-header"):
         text "Register as guest:"
       input(id = "homeserver", class = "login-input", `type` = "text", onkeyupenter = register, value = "https://matrix.org", placeholder = "https://homeserver.org")
       input(id = "alias", class = "login-input", `type` = "text", onkeyupenter = register, placeholder = "What should we call you?")
@@ -168,7 +168,8 @@ proc chatInfo*(roomId: string = ""): Vnode =
         text "Chat Information"
       case chatInfoView:
       of ChatInfoView.noInfo:
-        renderNoneSelected()
+        # renderNoneSelected()
+        echo "no info!"
       of ChatInfoView.loading:
         renderLoader("Loading...")
       of ChatInfoView.loaded:

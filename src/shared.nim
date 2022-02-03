@@ -94,7 +94,7 @@ proc renderNoneSelected*: Vnode =
 proc renderLoader*(message: string): Vnode =
   result = buildHtml:
     tdiv(class = "modal"):
-      h3:
+      h3(class = "modal-header"):
         text message
       img(id = "spinner", src = "/simple-matrix-client/assets/spinner.svg")
 
