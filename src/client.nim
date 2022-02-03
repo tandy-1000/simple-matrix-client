@@ -78,9 +78,9 @@ proc register =
   proc registerMatrix(homeserver, alias: string, deviceId = dbName) {.async.} =
     client = newAsyncMatrixClient(homeserver)
     let regRes: RegisterRes = await client.registerGuest(deviceId = deviceId)
-    # TODO: set alias
-    currentUserId = alias
+    currentUserId = regRes.userId
     client.setToken regRes.accessToken
+    let displaynameRes = await client.setDisplayname(regRes.userId, alias)
     discard initialSync()
     discard db.storeToken(currentUserId, homeserver, regRes.accessToken, dbOptions)
 
