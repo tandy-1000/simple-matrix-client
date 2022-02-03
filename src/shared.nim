@@ -61,13 +61,11 @@ proc renderRoomState*(events: seq[StateEvent]): Vnode =
           text chatName
       renderRoomMembers(members)
 
-proc renderChatMessages*(roomId, userId: string, joinedRoom: JoinedRoom): Vnode =
+proc renderChatMessages*(userId: string, joinedRoom: JoinedRoom): Vnode =
   var
     body: string
     messageClass: string
   result = buildHtml:
-    h3(id = "chat-header"):
-        text roomId
     tdiv(id = "messages"):
       tdiv(id = "inner-messages"):
         for event in joinedRoom.timeline.events:
