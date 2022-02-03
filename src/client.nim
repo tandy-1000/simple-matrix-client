@@ -200,8 +200,9 @@ proc send(ev: kdom.Event; n: VNode) =
 proc chatPane*(userId: string, roomId: string): Vnode =
   result = buildHtml:
     tdiv(id = "chat-pane", class = "col"):
-      h3(id = "chat-header"):
-          text roomId
+      if roomId != "":
+        h3(id = "chat-header"):
+            text roomId
       case chatPaneView:
       of ChatPaneView.noChat:
         renderNoneSelected()
