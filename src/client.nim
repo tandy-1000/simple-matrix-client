@@ -205,7 +205,7 @@ proc chatPane*(userId: string, roomId: string): Vnode =
         renderNoneSelected()
       of ChatPaneView.selected:
         let joinedRoom = syncResp.rooms.join[roomId]
-        renderChatMessages(userId, joinedRoom)
+        renderChatMessages(roomId, userId, joinedRoom)
       tdiv(id = "message-box", class = "border-box"):
         tdiv(id = "message-input", autofocus = "autofocus", contenteditable = "true", onkeyupenter = send)
         button(id = "send-button", onclick = send):
