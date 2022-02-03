@@ -3555,6 +3555,9 @@ framePtr = F.prev;
 var F = {procname: "module macros", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/core/macros.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
+var F = {procname: "module macros", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/core/macros.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
 var F = {procname: "module vstyles", prev: framePtr, filename: "/home/runner/.nimble/pkgs/karax-1.2.1/karax/vstyles.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
@@ -6943,6 +6946,9 @@ framePtr = F.prev;
 var F = {procname: "module streams", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/streams.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
+var F = {procname: "module streams", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/streams.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
 var F = {procname: "module lexbase", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/lexbase.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
@@ -7121,6 +7127,9 @@ var F = {procname: "module options", prev: framePtr, filename: "/home/runner/wor
 framePtr = F;
 framePtr = F.prev;
 var F = {procname: "module options", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/options.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module json", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/json.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
 var F = {procname: "module json", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/json.nim", line: 0};
@@ -18309,7 +18318,7 @@ function newJObject_1308622940() {
 
   var F = {procname: "json.newJObject", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/json.nim", line: 0};
   framePtr = F;
-    F.line = 240;
+    F.line = 243;
     result_1308622941 = {kind: 5, fields: initOrderedTable_1308622942(2), isUnquoted: false, str: [], num: 0, fnum: 0.0, bval: false, elems: []};
   framePtr = F.prev;
 
@@ -18560,11 +18569,11 @@ function HEX5BHEX5DHEX3D_1308624781(obj_1308624782, key_1308624783, val_13086247
   var F = {procname: "json.[]=", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/json.nim", line: 0};
   framePtr = F;
     if (!((obj_1308624782.kind == 5))) {
-    F.line = 391;
-    failedAssertImpl_218103864(makeNimstrLit("/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/json.nim(391, 9) `obj.kind == JObject` "));
+    F.line = 394;
+    failedAssertImpl_218103864(makeNimstrLit("/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/json.nim(394, 9) `obj.kind == JObject` "));
     }
     
-    F.line = 392;
+    F.line = 395;
     var Temporary1 = obj_1308624782;
     if (ConstSet24[Temporary1.kind]===undefined) { raiseFieldError2(makeNimstrLit("field \'fields\' is not accessible for type \'JsonNodeObj\' using \'kind = "), reprDiscriminant(Temporary1.kind, NTI1308622851)); }
     HEX5BHEX5DHEX3D_1308623139(Temporary1.fields, key_1308624783, val_1308624784);
@@ -18578,7 +18587,7 @@ function newJArray_1308622971() {
 
   var F = {procname: "json.newJArray", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/json.nim", line: 0};
   framePtr = F;
-    F.line = 244;
+    F.line = 247;
     result_1308622972 = {kind: 6, elems: [], isUnquoted: false, str: [], num: 0, fnum: 0.0, bval: false, fields: ({data: [], counter: 0, first: 0, last: 0})};
   framePtr = F.prev;
 
@@ -18592,11 +18601,11 @@ function add_1308623070(father_1308623071, child_1308623072) {
   var F = {procname: "json.add", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/json.nim", line: 0};
   framePtr = F;
     if (!((father_1308623071.kind == 6))) {
-    F.line = 302;
-    failedAssertImpl_218103864(makeNimstrLit("/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/json.nim(302, 10) `father.kind == JArray` "));
+    F.line = 305;
+    failedAssertImpl_218103864(makeNimstrLit("/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/json.nim(305, 10) `father.kind == JArray` "));
     }
     
-    F.line = 303;
+    F.line = 306;
     var Temporary1 = father_1308623071;
     if (ConstSet25[Temporary1.kind]===undefined) { raiseFieldError2(makeNimstrLit("field \'elems\' is not accessible for type \'JsonNodeObj\' using \'kind = "), reprDiscriminant(Temporary1.kind, NTI1308622851)); }
     Temporary1.elems.push(child_1308623072);;
@@ -18610,7 +18619,7 @@ function newJString_1308622890(s_1308622891) {
 
   var F = {procname: "json.newJString", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/json.nim", line: 0};
   framePtr = F;
-    F.line = 209;
+    F.line = 212;
     result_1308622892 = {kind: 4, str: nimCopy(null, s_1308622891, NTI33554439), isUnquoted: false, num: 0, fnum: 0.0, bval: false, fields: ({data: [], counter: 0, first: 0, last: 0}), elems: []};
   framePtr = F.prev;
 
@@ -18623,7 +18632,7 @@ function newJNull_1308622938() {
 
   var F = {procname: "json.newJNull", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/json.nim", line: 0};
   framePtr = F;
-    F.line = 236;
+    F.line = 239;
     result_1308622939 = {kind: 0, isUnquoted: false, str: [], num: 0, fnum: 0.0, bval: false, fields: ({data: [], counter: 0, first: 0, last: 0}), elems: []};
   framePtr = F.prev;
 
@@ -18636,7 +18645,7 @@ function newJBool_1308622935(b_1308622936) {
 
   var F = {procname: "json.newJBool", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/json.nim", line: 0};
   framePtr = F;
-    F.line = 232;
+    F.line = 235;
     result_1308622937 = {kind: 1, bval: b_1308622936, isUnquoted: false, str: [], num: 0, fnum: 0.0, fields: ({data: [], counter: 0, first: 0, last: 0}), elems: []};
   framePtr = F.prev;
 
@@ -18649,7 +18658,7 @@ function newJInt_1308622929(n_1308622930) {
 
   var F = {procname: "json.newJInt", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/json.nim", line: 0};
   framePtr = F;
-    F.line = 224;
+    F.line = 227;
     result_1308622931 = {kind: 2, num: n_1308622930, isUnquoted: false, str: [], fnum: 0.0, bval: false, fields: ({data: [], counter: 0, first: 0, last: 0}), elems: []};
   framePtr = F.prev;
 
@@ -18662,7 +18671,7 @@ function newJFloat_1308622932(n_1308622933) {
 
   var F = {procname: "json.newJFloat", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/json.nim", line: 0};
   framePtr = F;
-    F.line = 228;
+    F.line = 231;
     result_1308622934 = {kind: 3, fnum: n_1308622933, isUnquoted: false, str: [], num: 0, bval: false, fields: ({data: [], counter: 0, first: 0, last: 0}), elems: []};
   framePtr = F.prev;
 
@@ -27564,9 +27573,9 @@ function onChatClick_452987635(ev_452987636, n_452987637) {
   framePtr = F;
     F.line = 177;
     selectedRoom_452984869[0] = nimCopy(null, cstrToNimstr(n_452987637.id), NTI33554439);
-    F.line = 179;
+    F.line = 178;
     chatPaneView_452984856[0] = 1;
-    F.line = 180;
+    F.line = 179;
     redraw_603980781(kxi_603979840[0]);
   framePtr = F.prev;
 
@@ -27578,20 +27587,20 @@ function renderJoinedRooms_452987638(joinedRooms_452987641) {
 
   var F = {procname: "client.renderJoinedRooms", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
   framePtr = F;
+    F.line = 183;
     F.line = 184;
-    F.line = 185;
     var tmp_452987643 = tree_637534897(43, []);
-    F.line = 185;
+    F.line = 184;
     tmp_452987643.id = "chats";
-    F.line = 185;
+    F.line = 184;
     tmp_452987643.class = "list";
     Label1: do {
-      F.line = 187;
+      F.line = 186;
       var i_452987663 = -1;
       Label2: do {
-        F.line = 186;
+        F.line = 185;
         var id_452987947 = [];
-        F.line = 186;
+        F.line = 185;
         var room_452987948 = ({summary: ({mHEX2Eheroes: [], mHEX2EjoinedMemberCount: 0, mHEX2Einvited_member_count: 0}), state: ({events: []}), timeline: ({events: [], limited: false, prevBatch: []}), ephemeral: ({events: []}), accountData: ({events: []}), unreadNotifications: ({highlightCount: 0, notificationCount: 0})});
         F.line = 693;
         var L_452988781 = len_452987712(joinedRooms_452987641);
@@ -27611,40 +27620,40 @@ function renderJoinedRooms_452987638(joinedRooms_452987641) {
                 F.line = 694;
                 h_452988783 = res_452988785;
                 if (isFilled_1023410207(joinedRooms_452987641.data[chckIndx(h_452988783, 0, (joinedRooms_452987641.data).length - 1)].Field0)) {
-                F.line = 187;
+                F.line = 186;
                 var colontmp__452988788 = nimCopy(null, {Field0: nimCopy(null, joinedRooms_452987641.data[chckIndx(h_452988783, 0, (joinedRooms_452987641.data).length - 1)].Field1, NTI33554439), Field1: nimCopy(null, joinedRooms_452987641.data[chckIndx(h_452988783, 0, (joinedRooms_452987641.data).length - 1)].Field2, NTI1879048200)}, NTI452986596);
-                F.line = 187;
+                F.line = 186;
                 id_452987947 = colontmp__452988788["Field0"];
-                F.line = 187;
+                F.line = 186;
                 room_452987948 = nimCopy(room_452987948, colontmp__452988788["Field1"], NTI1879048200);
-                F.line = 187;
+                F.line = 186;
                 i_452987663 = addInt(i_452987663, 1);
                 if ((i_452987663 == subInt(len_452987712(joinedRooms_452987641), 1))) {
-                F.line = 188;
+                F.line = 187;
                 var tmp_452987644 = tree_637534897(106, []);
-                F.line = 188;
+                F.line = 187;
                 tmp_452987644.class = "chat last-chat";
-                F.line = 188;
+                F.line = 187;
                 tmp_452987644.id = toJSStr(id_452987947);
-                F.line = 188;
+                F.line = 187;
                 addEventHandler_603980961(tmp_452987644, 0, onChatClick_452987635, kxi_603979840[0]);
-                F.line = 189;
+                F.line = 188;
                 add_637534834(tmp_452987644, text_637534949(id_452987947));
-                F.line = 189;
+                F.line = 188;
                 add_637534834(tmp_452987643, tmp_452987644);
                 }
                 else {
-                  F.line = 191;
+                  F.line = 190;
                   var tmp_452987645 = tree_637534897(106, []);
-                  F.line = 191;
+                  F.line = 190;
                   tmp_452987645.class = "chat";
-                  F.line = 191;
+                  F.line = 190;
                   tmp_452987645.id = toJSStr(id_452987947);
-                  F.line = 191;
+                  F.line = 190;
                   addEventHandler_603980961(tmp_452987645, 0, onChatClick_452987635, kxi_603979840[0]);
-                  F.line = 192;
+                  F.line = 191;
                   add_637534834(tmp_452987645, text_637534949(id_452987947));
-                  F.line = 192;
+                  F.line = 191;
                   add_637534834(tmp_452987643, tmp_452987645);
                 }
                 
@@ -27674,29 +27683,29 @@ function chatList_452988214(syncResp_452988215) {
 
   var F = {procname: "client.chatList", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
   framePtr = F;
+    F.line = 215;
     F.line = 216;
-    F.line = 217;
     var tmp_452988217 = tree_637534897(43, []);
-    F.line = 217;
+    F.line = 216;
     tmp_452988217.id = "list-pane";
-    F.line = 217;
+    F.line = 216;
     tmp_452988217.class = "col";
-    F.line = 218;
+    F.line = 217;
     var tmp_452988218 = tree_637534897(23, []);
-    F.line = 218;
+    F.line = 217;
     tmp_452988218.id = "chat-header";
-    F.line = 219;
+    F.line = 218;
     add_637534834(tmp_452988218, text_637534949(makeNimstrLit("Chats")));
-    F.line = 219;
+    F.line = 218;
     add_637534834(tmp_452988217, tmp_452988218);
-    F.line = 220;
+    F.line = 219;
     switch (chatListView_452984857[0]) {
     case 0:
-      F.line = 222;
+      F.line = 221;
       add_637534834(tmp_452988217, renderJoinedRooms_452987638(syncResp_452988215.rooms.join));
       break;
     case 1:
-      F.line = 225;
+      F.line = 224;
       add_637534834(tmp_452988217, renderJoinedRooms_452987638(syncResp_452988215.rooms.join));
       break;
     }
@@ -27774,12 +27783,12 @@ function getStr_1308622986(n_1308622987, default_1308622988) {
   framePtr = F;
   BeforeRet: do {
       if ((n_1308622987 == null)) Temporary1 = true; else {        Temporary1 = !((n_1308622987.kind == 4));      }    if (Temporary1) {
-    F.line = 250;
+    F.line = 253;
     result_1308622989 = nimCopy(null, default_1308622988, NTI33554439);
     break BeforeRet;
     }
     else {
-      F.line = 251;
+      F.line = 254;
       var Temporary2 = n_1308622987;
       if (ConstSet34[Temporary2.kind]===undefined) { raiseFieldError2(makeNimstrLit("field \'str\' is not accessible for type \'JsonNodeObj\' using \'kind = "), reprDiscriminant(Temporary2.kind, NTI1308622851)); }
       result_1308622989 = nimCopy(null, Temporary2.str, NTI33554439);
@@ -27868,7 +27877,7 @@ function getOrDefault_1308626355(node_1308626356, key_1308626357) {
   var F = {procname: "json.getOrDefault", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/json.nim", line: 0};
   framePtr = F;
       if (!!((node_1308626356 == null))) Temporary1 = false; else {        Temporary1 = (node_1308626356.kind == 5);      }    if (Temporary1) {
-    F.line = 605;
+    F.line = 608;
     var Temporary2 = node_1308626356;
     if (ConstSet35[Temporary2.kind]===undefined) { raiseFieldError2(makeNimstrLit("field \'fields\' is not accessible for type \'JsonNodeObj\' using \'kind = "), reprDiscriminant(Temporary2.kind, NTI1308622851)); }
     result_1308626358 = getOrDefault_1308626253(Temporary2.fields, key_1308626357);
@@ -27885,7 +27894,7 @@ function HEX7BHEX7D_1308626437(node_1308626438, key_1308626439) {
 
   var F = {procname: "json.{}", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/json.nim", line: 0};
   framePtr = F;
-    F.line = 608;
+    F.line = 611;
     result_1308626440 = getOrDefault_1308626355(node_1308626438, key_1308626439);
   framePtr = F.prev;
 
@@ -29583,7 +29592,7 @@ function send_452988001(ev_452988002, n_452988003) {
       var F = {procname: "send.matrixSend", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
       framePtr = F;
       BeforeRet: do {
-        F.line = 196;
+        F.line = 195;
         var _ = (await sendMessage_452988014(client_452984852[0], makeNimstrLit("m.room.message"), selectedRoom_452984869[0], HEX24_1946160115(getTime_1946158100()), message_452988006, 0));
         F.line = 134;
         result_452988008 = undefined;
@@ -29597,11 +29606,11 @@ function send_452988001(ev_452988002, n_452988003) {
 
   var F = {procname: "client.send", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
   framePtr = F;
-    F.line = 197;
+    F.line = 196;
     var message_452988072 = cstrToNimstr(document.getElementById("message-input").textContent);
-    F.line = 198;
+    F.line = 197;
     document.getElementById("message-input").textContent = "";
-    F.line = 199;
+    F.line = 198;
     var _ = matrixSend_452988005(message_452988072);
   framePtr = F.prev;
 
@@ -29613,55 +29622,55 @@ function chatPane_452988073(userId_452988074, roomId_452988075) {
 
   var F = {procname: "client.chatPane", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
   framePtr = F;
+    F.line = 201;
     F.line = 202;
-    F.line = 203;
     var tmp_452988077 = tree_637534897(43, []);
-    F.line = 203;
+    F.line = 202;
     tmp_452988077.id = "chat-pane";
-    F.line = 203;
+    F.line = 202;
     tmp_452988077.class = "col";
-    F.line = 204;
+    F.line = 203;
     switch (chatPaneView_452984856[0]) {
     case 0:
-      F.line = 206;
+      F.line = 205;
       add_637534834(tmp_452988077, renderNoneSelected_587202770());
       break;
     case 1:
-      F.line = 208;
+      F.line = 207;
       var joinedRoom_452988213 = nimCopy(null, HEX5BHEX5D_452988134(syncResp_452984859[0].rooms.join, roomId_452988075), NTI1879048200);
-      F.line = 209;
+      F.line = 208;
       add_637534834(tmp_452988077, renderChatMessages_587202728(userId_452988074, joinedRoom_452988213));
       break;
     }
-    F.line = 210;
+    F.line = 209;
     var tmp_452988078 = tree_637534897(43, []);
-    F.line = 210;
+    F.line = 209;
     tmp_452988078.id = "message-box";
-    F.line = 210;
+    F.line = 209;
     tmp_452988078.class = "border-box";
-    F.line = 211;
+    F.line = 210;
     var tmp_452988079 = tree_637534897(43, []);
-    F.line = 211;
+    F.line = 210;
     tmp_452988079.id = "message-input";
-    F.line = 211;
+    F.line = 210;
     setAttr_637534760(tmp_452988079, "autofocus", "autofocus");
-    F.line = 211;
+    F.line = 210;
     setAttr_637534760(tmp_452988079, "contenteditable", "true");
-    F.line = 211;
+    F.line = 210;
     addEventHandler_603980961(tmp_452988079, 29, send_452988001, kxi_603979840[0]);
-    F.line = 211;
+    F.line = 210;
     add_637534834(tmp_452988078, tmp_452988079);
-    F.line = 212;
+    F.line = 211;
     var tmp_452988080 = tree_637534897(106, []);
-    F.line = 212;
+    F.line = 211;
     tmp_452988080.id = "send-button";
-    F.line = 212;
+    F.line = 211;
     addEventHandler_603980961(tmp_452988080, 0, send_452988001, kxi_603979840[0]);
-    F.line = 213;
+    F.line = 212;
     add_637534834(tmp_452988080, text_637534949(makeNimstrLit("\xE2\x9E\xA4")));
-    F.line = 213;
+    F.line = 212;
     add_637534834(tmp_452988078, tmp_452988080);
-    F.line = 213;
+    F.line = 212;
     add_637534834(tmp_452988077, tmp_452988078);
     result_452988076 = tmp_452988077;
   framePtr = F.prev;
@@ -29897,26 +29906,26 @@ function HEX3DHEX3D_1308624904(a_1308624905, b_1308624906) {
   BeforeRet: do {
     if ((a_1308624905 == null)) {
     if ((b_1308624906 == null)) {
-    F.line = 445;
+    F.line = 448;
     result_1308624907 = true;
     break BeforeRet;
     }
     
-    F.line = 446;
+    F.line = 449;
     result_1308624907 = false;
     break BeforeRet;
     }
     else {
       if ((b_1308624906 == null)) Temporary1 = true; else {        Temporary1 = !((a_1308624905.kind == b_1308624906.kind));      }    if (Temporary1) {
-    F.line = 448;
+    F.line = 451;
     result_1308624907 = false;
     break BeforeRet;
     }
     else {
-      F.line = 450;
+      F.line = 453;
       switch (a_1308624905.kind) {
       case 4:
-        F.line = 452;
+        F.line = 455;
         var Temporary2 = a_1308624905;
         if (ConstSet36[Temporary2.kind]===undefined) { raiseFieldError2(makeNimstrLit("field \'str\' is not accessible for type \'JsonNodeObj\' using \'kind = "), reprDiscriminant(Temporary2.kind, NTI1308622851)); }
         var Temporary3 = b_1308624906;
@@ -29924,7 +29933,7 @@ function HEX3DHEX3D_1308624904(a_1308624905, b_1308624906) {
         result_1308624907 = eqStrings(Temporary2.str, Temporary3.str);
         break;
       case 2:
-        F.line = 454;
+        F.line = 457;
         var Temporary4 = a_1308624905;
         if (ConstSet38[Temporary4.kind]===undefined) { raiseFieldError2(makeNimstrLit("field \'num\' is not accessible for type \'JsonNodeObj\' using \'kind = "), reprDiscriminant(Temporary4.kind, NTI1308622851)); }
         var Temporary5 = b_1308624906;
@@ -29932,7 +29941,7 @@ function HEX3DHEX3D_1308624904(a_1308624905, b_1308624906) {
         result_1308624907 = (Temporary4.num == Temporary5.num);
         break;
       case 3:
-        F.line = 456;
+        F.line = 459;
         var Temporary6 = a_1308624905;
         if (ConstSet40[Temporary6.kind]===undefined) { raiseFieldError2(makeNimstrLit("field \'fnum\' is not accessible for type \'JsonNodeObj\' using \'kind = "), reprDiscriminant(Temporary6.kind, NTI1308622851)); }
         var Temporary7 = b_1308624906;
@@ -29940,7 +29949,7 @@ function HEX3DHEX3D_1308624904(a_1308624905, b_1308624906) {
         result_1308624907 = (Temporary6.fnum == Temporary7.fnum);
         break;
       case 1:
-        F.line = 458;
+        F.line = 461;
         var Temporary8 = a_1308624905;
         if (ConstSet42[Temporary8.kind]===undefined) { raiseFieldError2(makeNimstrLit("field \'bval\' is not accessible for type \'JsonNodeObj\' using \'kind = "), reprDiscriminant(Temporary8.kind, NTI1308622851)); }
         var Temporary9 = b_1308624906;
@@ -29948,11 +29957,11 @@ function HEX3DHEX3D_1308624904(a_1308624905, b_1308624906) {
         result_1308624907 = (Temporary8.bval == Temporary9.bval);
         break;
       case 0:
-        F.line = 460;
+        F.line = 463;
         result_1308624907 = true;
         break;
       case 6:
-        F.line = 462;
+        F.line = 465;
         var Temporary10 = a_1308624905;
         if (ConstSet44[Temporary10.kind]===undefined) { raiseFieldError2(makeNimstrLit("field \'elems\' is not accessible for type \'JsonNodeObj\' using \'kind = "), reprDiscriminant(Temporary10.kind, NTI1308622851)); }
         var Temporary11 = b_1308624906;
@@ -29965,19 +29974,19 @@ function HEX3DHEX3D_1308624904(a_1308624905, b_1308624906) {
           var Temporary13 = b_1308624906;
           if (ConstSet47[Temporary13.kind]===undefined) { raiseFieldError2(makeNimstrLit("field \'fields\' is not accessible for type \'JsonNodeObj\' using \'kind = "), reprDiscriminant(Temporary13.kind, NTI1308622851)); }
         if (!((len_1308624992(Temporary12.fields) == len_1308624992(Temporary13.fields)))) {
-        F.line = 466;
+        F.line = 469;
         result_1308624907 = false;
         break BeforeRet;
         }
         
         Label14: do {
-          F.line = 467;
+          F.line = 470;
           var key_1308625374 = [];
-          F.line = 467;
+          F.line = 470;
           var val_1308625375 = null;
           F.line = 1690;
           var colontmp__452988822 = ({data: [], counter: 0, first: 0, last: 0});
-          F.line = 467;
+          F.line = 470;
           var Temporary15 = a_1308624905;
           if (ConstSet48[Temporary15.kind]===undefined) { raiseFieldError2(makeNimstrLit("field \'fields\' is not accessible for type \'JsonNodeObj\' using \'kind = "), reprDiscriminant(Temporary15.kind, NTI1308622851)); }
           colontmp__452988822 = nimCopy(colontmp__452988822, Temporary15.fields, NTI1308622862);
@@ -29993,14 +30002,14 @@ function HEX3DHEX3D_1308624904(a_1308624905, b_1308624906) {
                 F.line = 1300;
                 var nxt_452988827 = colontmp__452988822.data[chckIndx(h_452988825, 0, (colontmp__452988822.data).length - 1)].Field1;
                 if (isFilled_1023410207(colontmp__452988822.data[chckIndx(h_452988825, 0, (colontmp__452988822.data).length - 1)].Field0)) {
-                F.line = 467;
+                F.line = 470;
                 key_1308625374 = colontmp__452988822.data[chckIndx(h_452988825, 0, (colontmp__452988822.data).length - 1)].Field2;
-                F.line = 467;
+                F.line = 470;
                 val_1308625375 = colontmp__452988822.data[chckIndx(h_452988825, 0, (colontmp__452988822.data).length - 1)].Field3;
                   var Temporary18 = b_1308624906;
                   if (ConstSet49[Temporary18.kind]===undefined) { raiseFieldError2(makeNimstrLit("field \'fields\' is not accessible for type \'JsonNodeObj\' using \'kind = "), reprDiscriminant(Temporary18.kind, NTI1308622851)); }
                 if (!(hasKey_1308625416(Temporary18.fields, key_1308625374))) {
-                F.line = 468;
+                F.line = 471;
                 result_1308624907 = false;
                 break BeforeRet;
                 }
@@ -30008,7 +30017,7 @@ function HEX3DHEX3D_1308624904(a_1308624905, b_1308624906) {
                   var Temporary19 = b_1308624906;
                   if (ConstSet50[Temporary19.kind]===undefined) { raiseFieldError2(makeNimstrLit("field \'fields\' is not accessible for type \'JsonNodeObj\' using \'kind = "), reprDiscriminant(Temporary19.kind, NTI1308622851)); }
                 if (!(HEX3DHEX3D_1308624904((Temporary20 = HEX5BHEX5D_1308625490(Temporary19.fields, key_1308625374), Temporary20)[0][Temporary20[1]], val_1308625375))) {
-                F.line = 471;
+                F.line = 474;
                 result_1308624907 = false;
                 break BeforeRet;
                 }
@@ -30027,7 +30036,7 @@ function HEX3DHEX3D_1308624904(a_1308624905, b_1308624906) {
           }
           
         } while (false);
-        F.line = 474;
+        F.line = 477;
         result_1308624907 = true;
         break;
       }
@@ -30719,35 +30728,35 @@ function createDom_452988219() {
 
   var F = {procname: "client.createDom", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
   framePtr = F;
+    F.line = 227;
     F.line = 228;
-    F.line = 229;
     var tmp_452988221 = tree_637534897(43, []);
-    F.line = 230;
+    F.line = 229;
     add_637534834(tmp_452988221, headerSection_587202780());
-    F.line = 231;
+    F.line = 230;
     switch (globalClientView_452984853[0]) {
     case 0:
-      F.line = 233;
+      F.line = 232;
       var tmp_452988222 = tree_637534897(30, []);
-      F.line = 234;
+      F.line = 233;
       add_637534834(tmp_452988222, signinModal_452987375());
-      F.line = 234;
+      F.line = 233;
       add_637534834(tmp_452988221, tmp_452988222);
       break;
     case 1:
-      F.line = 236;
+      F.line = 235;
       var tmp_452988223 = tree_637534897(30, []);
-      F.line = 237;
+      F.line = 236;
       add_637534834(tmp_452988223, chatList_452988214(syncResp_452984859[0]));
-      F.line = 238;
+      F.line = 237;
       add_637534834(tmp_452988223, chatPane_452988073(currentUserId_452984858[0], selectedRoom_452984869[0]));
-      F.line = 239;
+      F.line = 238;
       add_637534834(tmp_452988223, chatInfo_452987435(selectedRoom_452984869[0]));
-      F.line = 239;
+      F.line = 238;
       add_637534834(tmp_452988221, tmp_452988223);
       break;
     }
-    F.line = 240;
+    F.line = 239;
     add_637534834(tmp_452988221, footerSection_587202785());
     result_452988220 = tmp_452988221;
   framePtr = F.prev;
