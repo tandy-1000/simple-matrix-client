@@ -26,9 +26,9 @@ header, footer {
 
 header {
   border: 0.01rem solid #111111;
-  border-top: none;
-  border-right: none;
-  border-left: none;
+  /* border-top: none; */
+  /* border-right: none; */
+  /* border-left: none; */
 }
 
 a {
@@ -81,7 +81,7 @@ main {
   flex: 1 0 auto;
   display: flex;
   flex-direction: row;
-  margin: auto 20vw;
+  /* margin: auto 20vw; */
 }
 
 .col {
@@ -290,7 +290,7 @@ button:hover {
 
 footer {
   border: 0.01rem solid #111111;
-  border-bottom: none;
-  border-right: none;
-  border-left: none;
+  /* border-bottom: none; */
+  /* border-right: none; */
+  /* border-left: none; */
 }
