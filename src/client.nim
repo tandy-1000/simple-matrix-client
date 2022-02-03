@@ -63,21 +63,6 @@ proc login =
 
   discard loginMatrix(homeserver, username, password)
 
-proc register =
-  proc registerMatrix(homeserver, password: string) {.async.} =
-    client = newAsyncMatrixClient(homeserver)
-    let regRes: RegisterRes = await client.registerGuest(password)
-    currentUserId = regRes.userId
-    client.setToken regRes.accessToken
-    discard initialSync()
-    discard db.storeToken(currentUserId, homeserver, regRes.accessToken, dbOptions)
-
-  let
-    homeserver = $getElementById("homeserver").value
-    password = $getElementById("password").value
-
-  discard registerMatrix(homeserver, password)
-
 proc renderLogin*: Vnode =
   result = buildHtml:
     tdiv(class = "modal"):
@@ -88,6 +73,32 @@ proc renderLogin*: Vnode =
       input(id = "password", class = "login-input", `type` = "password", onkeyupenter = login, placeholder = "password")
       button(id = "login", class = "text-button", onclick = login):
         text "Login"
+
+proc register =
+  proc registerMatrix(homeserver, alias: string, deviceId = dbName) {.async.} =
+    client = newAsyncMatrixClient(homeserver)
+    let regRes: RegisterRes = await client.registerGuest(deviceId = deviceId)
+    # TODO: set alias
+    currentUserId = alias
+    client.setToken regRes.accessToken
+    discard initialSync()
+    discard db.storeToken(currentUserId, homeserver, regRes.accessToken, dbOptions)
+
+  let
+    homeserver = $getElementById("homeserver").value
+    alias = $getElementById("alias").value
+
+  discard registerMatrix(homeserver, alias)
+
+proc renderRegister*: Vnode =
+  result = buildHtml:
+    tdiv(class = "modal"):
+      h3:
+        text "Register as guest:"
+      input(id = "homeserver", class = "login-input", `type` = "text", onkeyupenter = register, value = "https://matrix.org", placeholder = "https://homeserver.org")
+      input(id = "alias", class = "login-input", `type` = "text", onkeyupenter = register, placeholder = "What should we call you?")
+      button(id = "register", class = "text-button", onclick = register):
+        text "Register"
 
 proc validate(homeserver, token: string) {.async.} =
   client = newAsyncMatrixClient(homeserver, token)
@@ -124,16 +135,6 @@ proc renderMenu*: Vnode =
       button(id = "register", class = "text-button"):
         text "Register as Guest"
         proc onclick() = globalMenuView = MenuView.registerView
-
-proc renderRegister*: Vnode =
-  result = buildHtml:
-    tdiv(class = "modal"):
-      h3:
-        text "Register as guest:"
-      input(id = "homeserver", class = "login-input", `type` = "text", onkeyupenter = register, value = "https://matrix.org", placeholder = "https://homeserver.org")
-      input(id = "password", class = "login-input", `type` = "password", onkeyupenter = register, placeholder = "password")
-      button(id = "register", class = "text-button", onclick = register):
-        text "Register"
 
 proc signinModal: Vnode =
   result = buildHtml:
