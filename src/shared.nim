@@ -32,7 +32,7 @@ type
 proc storeToken*(db: IndexedDB, userId, homeserver, token: string = "", options: IDBOptions) {.async.} =
   discard await put(db, "user".cstring, toJs User(userId: userId.cstring, homeserver: homeserver.cstring, token: token.cstring), options)
 
-proc renderRoomMembers*(members: seq[StateEvent]): Vnode =
+proc renderRoomMembers*(members: seq[ClientEvent]): Vnode =
   result = buildHtml:
     tdiv(id = "members"):
       p(class = "heading"):
@@ -42,17 +42,17 @@ proc renderRoomMembers*(members: seq[StateEvent]): Vnode =
           p(id = "chat-participant"):
             text member.content{"displayname"}.getStr()
 
-proc renderRoomState*(events: seq[StateEvent]): Vnode =
+proc renderRoomState*(events: seq[ClientEvent]): Vnode =
   var
     chatName: string
-    members: seq[StateEvent]
+    members: seq[ClientEvent]
 
   if events.len != 0:
-    for stateEv in events:
-      if stateEv.`type` == "m.room.member":
-        members &= stateEv
-      elif stateEv.`type` == "m.room.name":
-        chatName = stateEv.content{"name"}.getStr()
+    for clientEv in events:
+      if clientEv.`type` == "m.room.member":
+        members &= clientEv
+      elif clientEv.`type` == "m.room.name":
+        chatName = clientEv.content{"name"}.getStr()
 
   result = buildHtml:
     tdiv(id = "chat-information"):
