@@ -29,6 +29,11 @@ type
     homeserver*: cstring
     token*: cstring
 
+proc setTimeoutAsync(ms: int): Future[void] =
+  let promise = newPromise() do (res: proc(): void):
+    discard setTimeout(res, ms)
+  return promise
+
 proc storeToken*(db: IndexedDB, userId, homeserver, token: string = "", options: IDBOptions) {.async.} =
   discard await put(db, "user".cstring, toJs User(userId: userId.cstring, homeserver: homeserver.cstring, token: token.cstring), options)
 
@@ -61,29 +66,19 @@ proc renderRoomState*(events: seq[ClientEvent]): Vnode =
           text chatName
       renderRoomMembers(members)
 
-proc renderChatMessages*(userId: string, joinedRoom: JoinedRoom): Vnode =
-  var
-    body: string
-    messageClass: string
+proc renderMessage*(userId, eventId, messageClass, sender, body: string): Vnode =
+  var class = messageClass
+  if sender == userId:
+    class &= " self-sent"
   result = buildHtml:
-    tdiv(id = "messages"):
-      tdiv(id = "inner-messages"):
-        for event in joinedRoom.timeline.events:
-          if event.`type` == "m.room.message":
-            messageClass = "message"
-            body = event.content{"formatted_body"}.getStr()
-            if body == "":
-              body = event.content{"body"}.getStr()
-            if event.sender == userId:
-              messageClass &= " self-sent"
-            tdiv(id = kstring(event.eventId), class = kstring(messageClass)):
-              p(class = "message-sender"):
-                text event.sender
-              p(class = "message-body"):
-                if body == "":
-                  text body
-                else:
-                  verbatim body
+    tdiv(id = kstring(eventId), class = kstring(class)):
+      p(class = "message-sender"):
+        text sender
+      p(class = "message-body"):
+        if body == "":
+          text body
+        else:
+          verbatim body
 
 proc renderNoneSelected*: Vnode =
   result = buildHtml:

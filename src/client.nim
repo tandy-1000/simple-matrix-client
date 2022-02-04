@@ -19,16 +19,11 @@ var
   chatInfoView: ChatInfoView = ChatInfoView.noInfo
   chatPaneView: ChatPaneView = ChatPaneView.noChat
   chatListView: ChatListView = ChatListView.skeleton
-  currentUserId: string
-  syncResp: SyncRes
+  currentUserId, selectedRoom: string
+  initSyncResp, syncResp: SyncRes
   roomStateResp: RoomStateRes
+  roomMessagesResp: RoomMessagesRes
   storedUsers: Table[cstring, User]
-  selectedRoom: string
-
-proc setTimeoutAsync(ms: int): Future[void] =
-  let promise = newPromise() do (res: proc(): void):
-    discard setTimeout(res, ms)
-  return promise
 
 proc longSync {.async.} =
   try:
@@ -42,7 +37,8 @@ proc longSync {.async.} =
 proc initialSync {.async.} =
   globalMenuView = MenuView.syncing
   redraw()
-  syncResp = await client.sync()
+  initSyncResp = await client.sync()
+  syncResp = initSyncResp
   globalClientView = ClientView.chat
   redraw()
   # discard longSync()
@@ -175,9 +171,14 @@ proc chatInfo*(roomId: string = ""): Vnode =
       of ChatInfoView.loaded:
         renderRoomState(roomStateResp.events)
 
+proc getMessages(roomId, prevBatch: string) {.async.} =
+  roomMessagesResp = await client.getRoomMessages(roomId, `from` = prevBatch, dir = Direction.backward)
+  redraw()
+
 proc onChatClick(ev: kdom.Event; n: VNode) =
   selectedRoom = $n.id
   chatPaneView = ChatPaneView.selected
+  discard getMessages(selectedRoom, initSyncResp.rooms.join[selectedRoom].timeline.prevBatch)
   redraw()
 
 proc renderJoinedRooms(joinedRooms: Table[string, JoinedRoom]): Vnode =
@@ -199,6 +200,27 @@ proc send(ev: kdom.Event; n: VNode) =
   getElementById("message-input").textContent = ""
   discard matrixSend(message)
 
+proc scrollMessages(ev: kdom.Event; n: VNode) =
+  let outerDom = n.dom
+  if (outerDom.scrollHeight - outerDom.offsetHeight) == -outerDom.scrollTop:
+    if selectedRoom != "" and roomMessagesResp.`end`.isSome():
+      discard getMessages(selectedRoom, roomMessagesResp.`end`)
+
+proc renderChatMessages*(userId: string, events: seq[ClientEvent]): Vnode =
+  var body: string
+  let messageClass = "message"
+  result = buildHtml:
+    tdiv(id = "messages", onscroll = scrollMessages):
+      tdiv(id = "inner-messages"):
+        for event in events:
+          if event.`type` == "m.room.message":
+            body = event.content{"formatted_body"}.getStr()
+            if body == "":
+              body = event.content{"body"}.getStr()
+            renderMessage(userId, event.eventId, messageClass, event.sender, body)
+          elif event.`type` == "m.room.encrypted":
+            renderMessage(userId, event.eventId, messageClass, event.sender, "`Encrypted message`")
+
 proc chatPane*(userId: string, roomId: string): Vnode =
   result = buildHtml:
     tdiv(id = "chat-pane", class = "col"):
@@ -209,8 +231,9 @@ proc chatPane*(userId: string, roomId: string): Vnode =
       of ChatPaneView.noChat:
         renderNoneSelected()
       of ChatPaneView.selected:
-        let joinedRoom = syncResp.rooms.join[roomId]
-        renderChatMessages(userId, joinedRoom)
+        let timeline = initSyncResp.rooms.join[roomId].timeline
+        # let timeline = roomMessagesResp.chunk
+        renderChatMessages(userId, timeline)
       tdiv(id = "message-box", class = "border-box"):
         tdiv(id = "message-input", autofocus = "autofocus", contenteditable = "true", onkeyupenter = send)
         button(id = "send-button", onclick = send):
@@ -238,7 +261,7 @@ proc createDom: VNode =
           signinModal()
       of ClientView.chat:
         main:
-          chatList(syncResp)
+          chatList(initSyncResp)
           chatPane(currentUserId, selectedRoom)
           chatInfo(selectedRoom)
       footerSection()

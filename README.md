@@ -12,10 +12,13 @@ TODO:
  - [x] Indicate what chat is currently selected
  - [x] Send messages
  - [x] Store login token in IndexedDB
+ - [x] Display encrypted messages
  - [x] Long-polling for Sync API
- - [ ] Setup a data store for sync and chat data
+ - [ ] Refactor and setup a proper data store for sync and chat data
+    - [ ] use global vars to store data from initial sync
+    - [ ] subsequent syncs / get messages will add to those vars
+ - [ ] Infinite scroll for messages
  - [ ] Get chat name for chat list
- - [ ] Display message for encrypted chats
  - [ ] Properly name DMs in chat information pane
  - [ ] Make it faster on large accounts
  - [ ] Make the UI more mobile friendly
