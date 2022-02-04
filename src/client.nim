@@ -2,7 +2,7 @@ import
   pkg/karax/[karax, kbase, karaxdsl, vdom, kdom],
   pkg/matrix,
   pkg/nodejs/jsindexeddb,
-  std/[asyncjs, tables, json, jsffi, enumerate, times],
+  std/[asyncjs, tables, json, jsffi, enumerate, times, options],
   shared
 from std/sugar import `=>`, collect
 
@@ -202,9 +202,24 @@ proc send(ev: kdom.Event; n: VNode) =
 
 proc scrollMessages(ev: kdom.Event; n: VNode) =
   let outerDom = n.dom
-  if (outerDom.scrollHeight - outerDom.offsetHeight) == -outerDom.scrollTop:
+  if outerDom != nil and (outerDom.scrollHeight - outerDom.offsetHeight) == -outerDom.scrollTop:
     if selectedRoom != "" and roomMessagesResp.`end`.isSome():
-      discard getMessages(selectedRoom, roomMessagesResp.`end`)
+      discard getMessages(selectedRoom, roomMessagesResp.`end`.get())
+
+proc renderChatMessages*(userId: string, events: seq[ClientEventWithoutRoomID]): Vnode =
+  var body: string
+  let messageClass = "message"
+  result = buildHtml:
+    tdiv(id = "messages", onscroll = scrollMessages):
+      tdiv(id = "inner-messages"):
+        for event in events:
+          if event.`type` == "m.room.message":
+            body = event.content{"formatted_body"}.getStr()
+            if body == "":
+              body = event.content{"body"}.getStr()
+            renderMessage(userId, event.eventId, messageClass, event.sender, body)
+          elif event.`type` == "m.room.encrypted":
+            renderMessage(userId, event.eventId, messageClass, event.sender, "`Encrypted message`")
 
 proc renderChatMessages*(userId: string, events: seq[ClientEvent]): Vnode =
   var body: string
@@ -231,9 +246,9 @@ proc chatPane*(userId: string, roomId: string): Vnode =
       of ChatPaneView.noChat:
         renderNoneSelected()
       of ChatPaneView.selected:
-        let timeline = initSyncResp.rooms.join[roomId].timeline
-        # let timeline = roomMessagesResp.chunk
-        renderChatMessages(userId, timeline)
+        let events = initSyncResp.rooms.join[roomId].timeline.events
+        # let events = roomMessagesResp.chunk
+        renderChatMessages(userId, events)
       tdiv(id = "message-box", class = "border-box"):
         tdiv(id = "message-input", autofocus = "autofocus", contenteditable = "true", onkeyupenter = send)
         button(id = "send-button", onclick = send):

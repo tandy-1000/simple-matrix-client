@@ -2,7 +2,7 @@ import
   pkg/karax/[kbase, karaxdsl, vdom],
   pkg/matrix,
   pkg/nodejs/jsindexeddb,
-  std/[asyncjs, json, jsffi]
+  std/[asyncjs, json, jsffi, dom]
 
 type
   ClientView* = enum
@@ -29,7 +29,7 @@ type
     homeserver*: cstring
     token*: cstring
 
-proc setTimeoutAsync(ms: int): Future[void] =
+proc setTimeoutAsync*(ms: int): Future[void] =
   let promise = newPromise() do (res: proc(): void):
     discard setTimeout(res, ms)
   return promise
