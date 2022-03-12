@@ -1,4 +1,4 @@
-# simple-matrix-client
+# simple-matrix-client [![Web deployment](https://github.com/tandy-1000/simple-matrix-client/actions/workflows/web.yml/badge.svg)](https://github.com/tandy-1000/simple-matrix-client/actions/workflows/web.yml)
 
 A simple matrix web client implemented using [matrix-nim-sdk](https://github.com/dylhack/matrix-nim-sdk/).
 
