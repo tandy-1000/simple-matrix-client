@@ -9713,43 +9713,43 @@ framePtr = F.prev;
 var F = {procname: "module times", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/times.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/shared.nim", line: 0};
+var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/shared.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/shared.nim", line: 0};
+var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/shared.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/shared.nim", line: 0};
+var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/shared.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/shared.nim", line: 0};
+var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/shared.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/shared.nim", line: 0};
+var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/shared.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/shared.nim", line: 0};
+var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/shared.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/shared.nim", line: 0};
+var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/shared.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/shared.nim", line: 0};
+var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/shared.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/shared.nim", line: 0};
+var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/shared.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/shared.nim", line: 0};
+var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/shared.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/shared.nim", line: 0};
+var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/shared.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/shared.nim", line: 0};
+var F = {procname: "module shared", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/shared.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
 var F = {procname: "module sugar", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/sugar.nim", line: 0};
@@ -9821,7 +9821,7 @@ framePtr = F.prev;
 var F = {procname: "module sugar", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/nim/lib/pure/sugar.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
 
@@ -10534,7 +10534,7 @@ function newAsyncMatrixClient_1140851148(homeserver_1140851149) {
   return result_1140851150;
 
 }
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 F.line = 14;
 var db_452984851 = [(window.indexedDB)];
@@ -10567,70 +10567,70 @@ var roomMessagesResp_452984864 = [({chunk: [], end: ({val: [], has: false}), sta
 F.line = 26;
 var storedUsers_452984872 = [({data: [], counter: 0})];
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
 
@@ -12627,7 +12627,7 @@ function text_637535038(s_637535039) {
 function headerSection_587202759() {
   var result_587202760 = null;
 
-  var F = {procname: "shared.headerSection", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/shared.nim", line: 0};
+  var F = {procname: "shared.headerSection", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/shared.nim", line: 0};
   framePtr = F;
     F.line = 97;
     F.line = 98;
@@ -13200,7 +13200,7 @@ function HEX5BHEX5DHEX3D_452985630(t_452985633, key_452985634, val_452985635) {
 async function getUsers_452985504() {
   var result_452985506 = null;
 
-  var F = {procname: "client.getUsers", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+  var F = {procname: "client.getUsers", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 109;
@@ -25802,7 +25802,7 @@ async function sync_452984991(client_452984993, filter_452984994, since_45298499
 async function initialSync_452985171() {
   var result_452985173 = null;
 
-  var F = {procname: "client.initialSync", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+  var F = {procname: "client.initialSync", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 38;
@@ -25829,7 +25829,7 @@ async function initialSync_452985171() {
 async function validate_452985448(homeserver_452985449, token_452985450) {
   var result_452985452 = null;
 
-  var F = {procname: "client.validate", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+  var F = {procname: "client.validate", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 100;
@@ -25899,7 +25899,7 @@ function wrapper_603980964(ev_603980965, n_603980966) {
 function renderMenu_452986900() {
               
 function HEX3Aanonymous_452987240(ev_452987241, n_452987242) {
-                var F = {procname: "renderMenu.:anonymous", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+                var F = {procname: "renderMenu.:anonymous", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
                 framePtr = F;
                   F.line = 123;
                   var user_452987376 = nimCopy(null, HEX5BHEX5D_452987296(storedUsers_452984872[0], n_452987242.id), NTI587202568);
@@ -25911,7 +25911,7 @@ function HEX3Aanonymous_452987240(ev_452987241, n_452987242) {
               }
     
 function HEX3Aanonymous_452987377() {
-      var F = {procname: "renderMenu.:anonymous", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+      var F = {procname: "renderMenu.:anonymous", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
       framePtr = F;
         F.line = 128;
         globalMenuView_452984855[0] = 1;
@@ -25921,7 +25921,7 @@ function HEX3Aanonymous_452987377() {
     }
     
 function HEX3Aanonymous_452987378() {
-      var F = {procname: "renderMenu.:anonymous", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+      var F = {procname: "renderMenu.:anonymous", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
       framePtr = F;
         F.line = 133;
         globalMenuView_452984855[0] = 2;
@@ -25932,7 +25932,7 @@ function HEX3Aanonymous_452987378() {
 
   var result_452986901 = null;
 
-  var F = {procname: "client.renderMenu", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+  var F = {procname: "client.renderMenu", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
   framePtr = F;
     if ((len_452986946(storedUsers_452984872[0]) == 0)) {
     F.line = 116;
@@ -27451,7 +27451,7 @@ function HEX3Aanonymous_1929380056(event_1929380057) {
 async function storeToken_587202616(db_587202617, userId_587202618, homeserver_587202619, token_587202620, options_587202621) {
   var result_587202623 = null;
 
-  var F = {procname: "shared.storeToken", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/shared.nim", line: 0};
+  var F = {procname: "shared.storeToken", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/shared.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 38;
@@ -27470,7 +27470,7 @@ function login_452985191() {
     async function loginMatrix_452985193(homeserver_452985194, username_452985195, password_452985196) {
       var result_452985198 = null;
 
-      var F = {procname: "login.loginMatrix", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+      var F = {procname: "login.loginMatrix", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
       framePtr = F;
       BeforeRet: do {
         F.line = 48;
@@ -27495,7 +27495,7 @@ function login_452985191() {
 
     }
 
-  var F = {procname: "client.login", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+  var F = {procname: "client.login", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
   framePtr = F;
     F.line = 56;
     var homeserver_452985275 = cstrToNimstr(document.getElementById("homeserver").value);
@@ -27513,7 +27513,7 @@ function login_452985191() {
 function renderLogin_452985278() {
   var result_452985279 = null;
 
-  var F = {procname: "client.renderLogin", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+  var F = {procname: "client.renderLogin", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
   framePtr = F;
     F.line = 63;
     F.line = 64;
@@ -28219,7 +28219,7 @@ function register_452985286() {
     async function registerMatrix_452985288(homeserver_452985289, alias_452985290, deviceId_452985291) {
       var result_452985293 = null;
 
-      var F = {procname: "register.registerMatrix", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+      var F = {procname: "register.registerMatrix", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
       framePtr = F;
       BeforeRet: do {
         F.line = 75;
@@ -28246,7 +28246,7 @@ function register_452985286() {
 
     }
 
-  var F = {procname: "client.register", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+  var F = {procname: "client.register", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
   framePtr = F;
     F.line = 84;
     var homeserver_452985438 = cstrToNimstr(document.getElementById("homeserver").value);
@@ -28262,7 +28262,7 @@ function register_452985286() {
 function renderRegister_452985440() {
   var result_452985441 = null;
 
-  var F = {procname: "client.renderRegister", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+  var F = {procname: "client.renderRegister", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
   framePtr = F;
     F.line = 90;
     F.line = 91;
@@ -28331,7 +28331,7 @@ function renderRegister_452985440() {
 function renderLoader_587202753(message_587202754) {
   var result_587202755 = null;
 
-  var F = {procname: "shared.renderLoader", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/shared.nim", line: 0};
+  var F = {procname: "shared.renderLoader", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/shared.nim", line: 0};
   framePtr = F;
     F.line = 90;
     F.line = 91;
@@ -28364,7 +28364,7 @@ function renderLoader_587202753(message_587202754) {
 function signinModal_452987391() {
   var result_452987392 = null;
 
-  var F = {procname: "client.signinModal", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+  var F = {procname: "client.signinModal", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
   framePtr = F;
     F.line = 136;
     F.line = 137;
@@ -29217,7 +29217,7 @@ async function getRoomMessages_452987645(client_452987647, roomId_452987648, fro
 async function getMessages_452987635(roomId_452987636, prevBatch_452987637) {
   var result_452987639 = null;
 
-  var F = {procname: "client.getMessages", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+  var F = {procname: "client.getMessages", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 175;
@@ -29269,7 +29269,7 @@ function HEX5BHEX5D_452987760(t_452987763, key_452987764) {
 }
 
 function onChatClick_452987704(ev_452987705, n_452987706) {
-  var F = {procname: "client.onChatClick", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+  var F = {procname: "client.onChatClick", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
   framePtr = F;
     F.line = 179;
     selectedRoom_452984860[0] = nimCopy(null, cstrToNimstr(n_452987706.id), NTI33554439);
@@ -29287,7 +29287,7 @@ function onChatClick_452987704(ev_452987705, n_452987706) {
 function renderJoinedRooms_452987839(joinedRooms_452987842) {
   var result_452987843 = null;
 
-  var F = {procname: "client.renderJoinedRooms", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+  var F = {procname: "client.renderJoinedRooms", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
   framePtr = F;
     F.line = 186;
     F.line = 187;
@@ -29383,7 +29383,7 @@ function renderJoinedRooms_452987839(joinedRooms_452987842) {
 function chatList_452988432(syncResp_452988433) {
   var result_452988434 = null;
 
-  var F = {procname: "client.chatList", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+  var F = {procname: "client.chatList", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
   framePtr = F;
     F.line = 258;
     F.line = 259;
@@ -29421,7 +29421,7 @@ function chatList_452988432(syncResp_452988433) {
 function renderNoneSelected_587202749() {
   var result_587202750 = null;
 
-  var F = {procname: "shared.renderNoneSelected", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/shared.nim", line: 0};
+  var F = {procname: "shared.renderNoneSelected", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/shared.nim", line: 0};
   framePtr = F;
     F.line = 84;
     F.line = 85;
@@ -29468,7 +29468,7 @@ function scrollMessages_452988274(ev_452988275, n_452988276) {
       var Temporary2;
     var Temporary3;
 
-  var F = {procname: "client.scrollMessages", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+  var F = {procname: "client.scrollMessages", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
   framePtr = F;
     F.line = 204;
     var outerDom_452988277 = n_452988276.dom;
@@ -29630,7 +29630,7 @@ function verbatim_637535044(s_637535045) {
 function renderMessage_587202738(userId_587202739, eventId_587202740, messageClass_587202741, sender_587202742, body_587202743) {
   var result_587202744 = null;
 
-  var F = {procname: "shared.renderMessage", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/shared.nim", line: 0};
+  var F = {procname: "shared.renderMessage", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/shared.nim", line: 0};
   framePtr = F;
     F.line = 70;
     var class_587202745 = nimCopy(null, messageClass_587202741, NTI33554439);
@@ -29679,7 +29679,7 @@ function renderMessage_587202738(userId_587202739, eventId_587202740, messageCla
 function renderChatMessages_452988313(userId_452988314, events_452988315) {
   var result_452988316 = null;
 
-  var F = {procname: "client.renderChatMessages", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+  var F = {procname: "client.renderChatMessages", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
   framePtr = F;
     F.line = 210;
     var body_452988317 = [];
@@ -31321,7 +31321,7 @@ function send_452988202(ev_452988203, n_452988204) {
     async function matrixSend_452988206(message_452988207) {
       var result_452988209 = null;
 
-      var F = {procname: "send.matrixSend", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+      var F = {procname: "send.matrixSend", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
       framePtr = F;
       BeforeRet: do {
         F.line = 198;
@@ -31336,7 +31336,7 @@ function send_452988202(ev_452988203, n_452988204) {
 
     }
 
-  var F = {procname: "client.send", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+  var F = {procname: "client.send", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
   framePtr = F;
     F.line = 199;
     var message_452988273 = cstrToNimstr(document.getElementById("message-input").textContent);
@@ -31352,7 +31352,7 @@ function send_452988202(ev_452988203, n_452988204) {
 function chatPane_452988364(userId_452988365, roomId_452988366) {
   var result_452988367 = null;
 
-  var F = {procname: "client.chatPane", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+  var F = {procname: "client.chatPane", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
   framePtr = F;
     F.line = 240;
     F.line = 241;
@@ -31948,7 +31948,7 @@ async function getRoomState_452987404(client_452987406, roomId_452987407) {
 async function getMatrixRoomState_452987395(roomId_452987396) {
   var result_452987398 = null;
 
-  var F = {procname: "client.getMatrixRoomState", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+  var F = {procname: "client.getMatrixRoomState", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 149;
@@ -31972,7 +31972,7 @@ async function getMatrixRoomState_452987395(roomId_452987396) {
 function renderRoomMembers_587202645(members_587202646) {
   var result_587202647 = null;
 
-  var F = {procname: "shared.renderRoomMembers", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/shared.nim", line: 0};
+  var F = {procname: "shared.renderRoomMembers", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/shared.nim", line: 0};
   framePtr = F;
     F.line = 41;
     F.line = 42;
@@ -32034,7 +32034,7 @@ function renderRoomMembers_587202645(members_587202646) {
 function renderRoomState_587202719(events_587202720) {
   var result_587202721 = null;
 
-  var F = {procname: "shared.renderRoomState", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/shared.nim", line: 0};
+  var F = {procname: "shared.renderRoomState", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/shared.nim", line: 0};
   framePtr = F;
     F.line = 52;
     var chatName_587202722 = [];
@@ -32110,7 +32110,7 @@ function chatInfo_452987451(roomId_452987452) {
 
   var result_452987453 = null;
 
-  var F = {procname: "client.chatInfo", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+  var F = {procname: "client.chatInfo", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
   framePtr = F;
     if (eqStrings(roomId_452987452, [])) {
     F.line = 156;
@@ -32166,7 +32166,7 @@ function chatInfo_452987451(roomId_452987452) {
 function footerSection_587202764() {
   var result_587202765 = null;
 
-  var F = {procname: "shared.footerSection", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/shared.nim", line: 0};
+  var F = {procname: "shared.footerSection", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/shared.nim", line: 0};
   framePtr = F;
     F.line = 104;
     F.line = 105;
@@ -32187,7 +32187,7 @@ function footerSection_587202764() {
 function matrixClient_452988437() {
   var result_452988438 = null;
 
-  var F = {procname: "client.matrixClient", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+  var F = {procname: "client.matrixClient", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
   framePtr = F;
     F.line = 270;
     F.line = 271;
@@ -32225,13 +32225,13 @@ function matrixClient_452988437() {
   return result_452988438;
 
 }
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 setRenderer_603980901(matrixClient_452988437, "ROOT", null);
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/src/client.nim", line: 0};
+var F = {procname: "module client", prev: framePtr, filename: "/home/runner/work/simple-matrix-client/simple-matrix-client/simple_matrix_client/client.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
