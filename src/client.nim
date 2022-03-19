@@ -266,7 +266,7 @@ proc chatList*(syncResp: SyncRes): Vnode =
         # TODO: properly render rooms with real names
         renderJoinedRooms(syncResp.rooms.join)
 
-proc matrixClient: VNode =
+proc matrixClient*: VNode =
   result = buildHtml:
     tdiv:
       headerSection()
