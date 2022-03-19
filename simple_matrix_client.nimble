@@ -13,8 +13,9 @@ bin           = @["server"]
 requires "nim >= 1.7.1"
 requires "https://github.com/tandy-1000/matrix-nim-sdk#head"
 requires "https://github.com/juancarlospaco/nodejs/#head"
+requires "prologue"
 requires "karax"
 
 task buildjs, "compile templates":
   exec "mkdir -p public public/js"
-  exec "nim -d:nimExperimentalAsyncjsThen -o:public/js/client.js js src/client.nim"
+  exec "nim -o:public/js/client.js js src/client.nim"
