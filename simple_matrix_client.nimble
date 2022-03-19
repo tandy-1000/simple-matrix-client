@@ -4,16 +4,18 @@ version       = "0.1.0"
 author        = "tandy"
 description   = "A simple Matrix.org client"
 license       = "AGPL-3.0-or-later"
+backend       = "js"
 srcDir        = "src"
 bin           = @["server"]
-
+installExt    = @["nim"]
 
 # Dependencies
 
 requires "nim >= 1.7.1"
 requires "https://github.com/tandy-1000/matrix-nim-sdk#head"
 requires "https://github.com/juancarlospaco/nodejs/#head"
-requires "prologue"
+when defined(c):
+  requires "prologue"
 requires "karax"
 
 task buildjs, "compile templates":
