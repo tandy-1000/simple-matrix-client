@@ -1,1 +1,5 @@
+# ignore binary files
+*
+!/**/
+!*.*
 *.js
