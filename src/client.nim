@@ -266,7 +266,7 @@ proc chatList*(syncResp: SyncRes): Vnode =
         # TODO: properly render rooms with real names
         renderJoinedRooms(syncResp.rooms.join)
 
-proc createDom: VNode =
+proc matrixClient: VNode =
   result = buildHtml:
     tdiv:
       headerSection()
@@ -281,4 +281,4 @@ proc createDom: VNode =
           chatInfo(selectedRoom)
       footerSection()
 
-setRenderer createDom
+setRenderer matrixClient
