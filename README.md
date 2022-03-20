@@ -28,11 +28,11 @@ cd simple-matrix-client
 nimble install
 ```
 
-### To embed a full client on a page, you can use:
+To embed a full client on a page, you can use:
 
 `matrixClient(renderChatList, renderChatInfo = true): Vnode`
 
-### To package the client's CSS, build `library.sass` located in the packages nimble folder:
+To package the client's CSS, build `library.sass` located in the packages nimble folder:
 
 `~/.nimble/pkgs/simple_matrix_client-0.1.0/simple_matrix_client/sass/library.sass`
 
