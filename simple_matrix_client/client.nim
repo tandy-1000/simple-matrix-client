@@ -159,7 +159,7 @@ proc chatInfo*(roomId: string = ""): Vnode =
       chatInfoView = ChatInfoView.loading
       discard getMatrixRoomState(roomId)
   result = buildHtml:
-    tdiv(id = "info-pane", class = "col"):
+    tdiv(id = "info-pane", class = "column"):
       h3(id = "chat-header"):
         text "Chat Information"
       case chatInfoView:
@@ -238,7 +238,7 @@ proc renderChatMessages*(userId: string, events: seq[ClientEvent]): Vnode =
 
 proc chatPane*(userId: string, roomId: string): Vnode =
   result = buildHtml:
-    tdiv(id = "chat-pane", class = "col"):
+    tdiv(id = "chat-pane", class = "column"):
       if roomId != "":
         h3(id = "chat-header"):
             text roomId
@@ -256,7 +256,7 @@ proc chatPane*(userId: string, roomId: string): Vnode =
 
 proc chatList*(syncResp: SyncRes): Vnode =
   result = buildHtml:
-    tdiv(id = "list-pane", class = "col"):
+    tdiv(id = "list-pane", class = "column"):
       h3(id = "chat-header"):
         text "Chats"
       case chatListView:
