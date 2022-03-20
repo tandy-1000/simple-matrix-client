@@ -149,6 +149,7 @@ proc getMatrixRoomState(roomId: string) {.async.} =
   let res = await client.getRoomState(roomId)
   roomStateResp = res
   chatInfoView = ChatInfoView.loaded
+  redraw()
 
 proc chatInfo*(roomId: string = ""): Vnode =
   if roomId == "":
@@ -191,11 +192,15 @@ proc renderJoinedRooms(joinedRooms: Table[string, JoinedRoom]): Vnode =
             text id
 
 proc send(ev: kdom.Event; n: VNode) =
-  proc matrixSend(message: string) {.async.} =
-    discard await client.sendMessage(eventType = "m.room.message", roomId = selectedRoom, txnId = $getTime(), body = message, msgtype = MessageType.`m.text`)
-  let message = $getElementById("message-input").textContent
-  getElementById("message-input").textContent = ""
-  discard matrixSend(message)
+  var kbev = ((KeyboardEvent)ev)
+  if not kbev.shiftKey:
+    proc matrixSend(message: string) {.async.} =
+      discard await client.sendMessage(eventType = "m.room.message", roomId = selectedRoom, txnId = $getTime(), body = message, msgtype = MessageType.`m.text`)
+    if selectedRoom != "":
+      let message = $getElementById("message-input").textContent
+      if message != "":
+        getElementById("message-input").textContent = ""
+        discard matrixSend(message)
 
 proc scrollMessages(ev: kdom.Event; n: VNode) =
   let outerDom = n.dom
