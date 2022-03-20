@@ -268,7 +268,7 @@ proc chatList*(syncResp: SyncRes): Vnode =
 
 proc matrixClient*: Vnode =
   result = buildHtml:
-    tdiv:
+    tdiv(id = "matrix-client"):
       case globalClientView:
       of ClientView.signin:
         main:
@@ -278,12 +278,3 @@ proc matrixClient*: Vnode =
           chatList(initSyncResp)
           chatPane(currentUserId, selectedRoom)
           chatInfo(selectedRoom)
-
-proc createDom*: VNode =
-  result = buildHtml:
-    tdiv:
-      headerSection()
-      matrixClient()
-      footerSection()
-
-setRenderer createDom

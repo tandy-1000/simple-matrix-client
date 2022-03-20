@@ -19,6 +19,11 @@ html, body {
   border: 0.01rem solid #111111;
 }
 
+#matrix-client {
+  display: flex;
+  flex: 1 0 auto;
+}
+
 header, footer {
   padding: 1.5em;
   box-sizing: border-box;
