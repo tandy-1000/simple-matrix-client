@@ -17,4 +17,4 @@ requires "karax"
 
 task buildjs, "compile templates":
   exec "mkdir -p public public/js"
-  exec "nim -o:public/js/client.js js simple_matrix_client/client.nim"
+  exec "nim -o:public/js/simple_matrix_client.js js simple_matrix_client.nim"
