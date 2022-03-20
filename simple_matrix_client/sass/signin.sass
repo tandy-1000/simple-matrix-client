@@ -1,16 +1,18 @@
+@use 'include/_variables' as v
+
 .signed-in-user
-  border: 0.01rem solid #111111
+  border: 0.01rem solid v.$fg-color
   border-radius: .5em
   margin: 1em
   padding: 1em
 
 .login-input
   background: none
-  border: 0.01rem solid #111111
+  border: 0.01rem solid v.$fg-color
   outline: none
   padding: .4rem
   margin: .5em 1em
-  font: normal 1rem Inter, sans-serif
+  font: normal 1rem v.$font
 
 #login
   margin-bottom: 0
