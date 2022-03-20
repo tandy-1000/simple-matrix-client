@@ -266,13 +266,15 @@ proc chatList*(syncResp: SyncRes): Vnode =
         # TODO: properly render rooms with real names
         renderJoinedRooms(syncResp.rooms.join)
 
-proc matrixClient*: Vnode =
+proc matrixClient(renderChatList, renderChatInfo = true)*: Vnode =
   result = buildHtml:
     tdiv(id = "matrix-client"):
       case globalClientView:
       of ClientView.signin:
         signinModal()
       of ClientView.chat:
-        chatList(initSyncResp)
+        if renderChatList:
+          chatList(initSyncResp)
         chatPane(currentUserId, selectedRoom)
-        chatInfo(selectedRoom)
+        if renderChatInfo:
+          chatInfo(selectedRoom)
