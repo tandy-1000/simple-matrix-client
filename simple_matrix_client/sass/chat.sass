@@ -1,126 +1,130 @@
-#chat-pane
-  flex: 50%
-  justify-content: space-between
+@use 'include/_variables' as v
 
-#chat-profile
-  border: 0.01rem solid #111111
-  border-radius: 50%
-  width: 6em
-  height: 6em
-  justify-content: center
-  align-items: center
-  border-radius: 100%
-  text-align: center
-  display: flex
-  margin: 1.5em auto 0em
+#matrix-client
 
-#list-pane, #info-pane
-  flex: 25%
+  #chat-pane
+    flex: 50%
+    justify-content: space-between
 
-#chat-pane
-  border: none
+  #chat-profile
+    border: 0.01rem solid v.$fg-color
+    border-radius: 50%
+    width: 6em
+    height: 6em
+    justify-content: center
+    align-items: center
+    border-radius: 100%
+    text-align: center
+    display: flex
+    margin: 1.5em auto 0em
 
-  > .modal
+  #list-pane, #info-pane
+    flex: 25%
+
+  #chat-pane
+    border: none
+
+    > .modal
+      margin: auto
+
+  #info-pane > .modal
     margin: auto
 
-#info-pane > .modal
-  margin: auto
+  #chat-header
+    padding: 1em
+    border-bottom: 0.01rem solid v.$fg-color
 
-#chat-header
-  padding: 1em
-  border-bottom: 0.01rem solid #111111
-
-#members, #chats
-  display: flex
-  flex-direction: column
-
-#message-box
-  display: flex
-  justify-content: space-between
-  border: none
-  border-top: 0.01rem solid #111111
-
-#message-input
-  resize: none
-  background: none
-  border: none
-  outline: none
-  padding: .8rem
-  font: normal 1rem Inter, sans-serif
-  flex-grow: 1
-  word-wrap: break-word
-  word-break: break-all
-
-#messages
-  display: flex
-  flex-direction: column-reverse
-
-#inner-messages
-  padding: .5em 1em .5em 1em
-  display: flex
-  flex-direction: column
-
-.message-sender
-  font-weight: 500
-  margin-bottom: 0.5em
-
-blockquote
-  background-color: #e8e8e8
-  border-left: 0.01rem solid #111
-  padding: .5em 1em
-  margin: .5em .5em
-
-.message
-  display: flex
-  border: 0.01rem solid #111111
-  border-radius: 0.5em
-  box-sizing: border-box
-  box-shadow: 0 0.05em 0.05em rgba(0, 0, 0, 0.15), 0 0.1em 0.1em rgba(0, 0, 0, 0.2), 0 0.2em 0.2em rgba(0, 0, 0, 0.15), 0 0.4em 0.4em rgba(0, 0, 0, 0.1)
-  padding: 0.8rem
-
-#chat-participant
-  display: flex
-  border: 0.01rem solid #111111
-  border-radius: 0.5em
-  box-sizing: border-box
-  box-shadow: 0 0.05em 0.05em rgba(0, 0, 0, 0.15), 0 0.1em 0.1em rgba(0, 0, 0, 0.2), 0 0.2em 0.2em rgba(0, 0, 0, 0.15), 0 0.4em 0.4em rgba(0, 0, 0, 0.1)
-  padding: 0.8rem
-  align-items: center
-
-.message
-  flex-direction: column
-  max-width: 22vw
-  margin: .5em auto .5em 0em
-  justify-content: right
-
-  > p
+  #members, #chats
     display: flex
-    flex-shrink: 1
+    flex-direction: column
 
-#chat-participant
-  margin: 1em 1.25em
+  #message-box
+    display: flex
+    justify-content: space-between
+    border: none
+    border-top: 0.01rem solid v.$fg-color
 
-#chats, #chat-information, #messages
-  overflow-y: auto
-  height: 0px
-  flex-grow: 1
+  #message-input
+    resize: none
+    background: none
+    border: none
+    outline: none
+    padding: .8rem
+    font: normal 1rem v.$font
+    flex-grow: 1
+    word-wrap: break-word
+    word-break: break-all
 
-.self-sent
-  margin-left: auto
-  margin-right: 0
+  #messages
+    display: flex
+    flex-direction: column-reverse
 
-.chat
-  text-align: left
-  padding: 0.8rem
-  border-bottom: 0.01rem solid #111111
+  #inner-messages
+    padding: .5em 1em .5em 1em
+    display: flex
+    flex-direction: column
 
-  &:active, &:focus
-    background-color: #e2e2e2
+  .message-sender
+    font-weight: 500
+    margin-bottom: 0.5em
 
-.last-chat
-  border-bottom: none
+  blockquote
+    background-color: v.$reply-accent
+    border-left: 0.01rem solid #111
+    padding: .5em 1em
+    margin: .5em .5em
 
-#send-button
-  border: none
-  border-left: 0.01rem solid #111111
-  padding: .8rem
+  .message
+    display: flex
+    border: 0.01rem solid v.$fg-color
+    border-radius: 0.5em
+    box-sizing: border-box
+    box-shadow: 0 0.05em 0.05em rgba(0, 0, 0, 0.15), 0 0.1em 0.1em rgba(0, 0, 0, 0.2), 0 0.2em 0.2em rgba(0, 0, 0, 0.15), 0 0.4em 0.4em rgba(0, 0, 0, 0.1)
+    padding: 0.8rem
+
+  #chat-participant
+    display: flex
+    border: 0.01rem solid v.$fg-color
+    border-radius: 0.5em
+    box-sizing: border-box
+    box-shadow: 0 0.05em 0.05em rgba(0, 0, 0, 0.15), 0 0.1em 0.1em rgba(0, 0, 0, 0.2), 0 0.2em 0.2em rgba(0, 0, 0, 0.15), 0 0.4em 0.4em rgba(0, 0, 0, 0.1)
+    padding: 0.8rem
+    align-items: center
+
+  .message
+    flex-direction: column
+    max-width: 22vw
+    margin: .5em auto .5em 0em
+    justify-content: right
+
+    > p
+      display: flex
+      flex-shrink: 1
+
+  #chat-participant
+    margin: 1em 1.25em
+
+  #chats, #chat-information, #messages
+    overflow-y: auto
+    height: 0px
+    flex-grow: 1
+
+  .self-sent
+    margin-left: auto
+    margin-right: 0
+
+  .chat
+    text-align: left
+    padding: 0.8rem
+    border-bottom: 0.01rem solid v.$fg-color
+
+    &:active, &:focus
+      background-color: #e2e2e2
+
+  .last-chat
+    border-bottom: none
+
+  #send-button
+    border: none
+    border-left: 0.01rem solid v.$fg-color
+    padding: .8rem
