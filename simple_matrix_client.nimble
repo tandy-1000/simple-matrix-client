@@ -17,7 +17,7 @@ requires "karax"
 
 task sass, "Generate css":
   exec "mkdir -p public/css"
-  exec "sass --style=compressed --no-source-map simple_matrix_client/sass/index.sass public/css/style.css"
+  exec "sass --style=compressed --no-source-map simple_matrix_client/sass/simple_matrix_client/index.sass public/css/style.css"
 
 task buildjs, "compile templates":
   exec "mkdir -p public public/js"

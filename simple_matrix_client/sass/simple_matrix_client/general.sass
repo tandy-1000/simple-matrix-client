@@ -1,4 +1,4 @@
-@use 'include/_variables' as v
+@use '../include/_variables' as v
 
 #matrix-client
   font: normal .95rem v.$font
@@ -6,13 +6,13 @@
   flex: 1 0 auto
 
   .border-box
-    border: 0.01rem solid v.$fg-color
+    border: 0.01rem solid v.$border-color
 
   .container
     margin: auto
 
   .modal
-    border: 0.01rem solid v.$fg-color
+    border: 0.01rem solid v.$border-color
     border-radius: .5em
     padding: 2em
     display: flex
@@ -25,7 +25,7 @@
   .col
     display: flex
     flex-direction: column
-    border: 0.01rem solid v.$fg-color
+    border: 0.01rem solid v.$border-color
     border-top: none
     border-bottom: none
     align-items: stretch
@@ -42,4 +42,4 @@
   .text-button
     margin: 1em
     padding: .5rem
-    border: 0.01rem solid v.$fg-color
+    border: 0.01rem solid v.$border-color

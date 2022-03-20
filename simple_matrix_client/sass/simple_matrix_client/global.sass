@@ -1,4 +1,7 @@
-@use 'include/_variables' as v
+@use '../include/_variables' as v
+
+$button-color: #EEEEEE !default
+$button-accent: #E2E2E2 !default
 
 a
   color: v.$fg-color
@@ -9,7 +12,7 @@ header, footer
   box-sizing: border-box
 
 header
-  border: 0.01rem solid v.$fg-color
+  border: 0.01rem solid v.$border-color
   border-top: none
   border-right: none
   border-left: none
@@ -36,14 +39,14 @@ p
   margin: 0
 
 button
-  background-color: v.$button-color
+  background-color: $button-color
   font: normal 1rem v.$font
 
   &:hover
-    background-color: v.$button-accent
+    background-color: $button-accent
 
 footer
-  border: 0.01rem solid v.$fg-color
+  border: 0.01rem solid v.$border-color
   border-bottom: none
   border-right: none
   border-left: none

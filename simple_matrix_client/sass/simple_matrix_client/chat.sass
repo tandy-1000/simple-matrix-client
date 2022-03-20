@@ -1,4 +1,6 @@
-@use 'include/_variables' as v
+@use '../include/_variables' as v
+
+$reply-accent: #E8E8E8 !default
 
 #matrix-client
 
@@ -7,7 +9,7 @@
     justify-content: space-between
 
   #chat-profile
-    border: 0.01rem solid v.$fg-color
+    border: 0.01rem solid v.$border-color
     border-radius: 50%
     width: 6em
     height: 6em
@@ -32,7 +34,7 @@
 
   #chat-header
     padding: 1em
-    border-bottom: 0.01rem solid v.$fg-color
+    border-bottom: 0.01rem solid v.$border-color
 
   #members, #chats
     display: flex
@@ -42,7 +44,7 @@
     display: flex
     justify-content: space-between
     border: none
-    border-top: 0.01rem solid v.$fg-color
+    border-top: 0.01rem solid v.$border-color
 
   #message-input
     resize: none
@@ -69,14 +71,14 @@
     margin-bottom: 0.5em
 
   blockquote
-    background-color: v.$reply-accent
+    background-color: $reply-accent
     border-left: 0.01rem solid #111
     padding: .5em 1em
     margin: .5em .5em
 
   .message
     display: flex
-    border: 0.01rem solid v.$fg-color
+    border: 0.01rem solid v.$border-color
     border-radius: 0.5em
     box-sizing: border-box
     box-shadow: 0 0.05em 0.05em rgba(0, 0, 0, 0.15), 0 0.1em 0.1em rgba(0, 0, 0, 0.2), 0 0.2em 0.2em rgba(0, 0, 0, 0.15), 0 0.4em 0.4em rgba(0, 0, 0, 0.1)
@@ -84,7 +86,7 @@
 
   #chat-participant
     display: flex
-    border: 0.01rem solid v.$fg-color
+    border: 0.01rem solid v.$border-color
     border-radius: 0.5em
     box-sizing: border-box
     box-shadow: 0 0.05em 0.05em rgba(0, 0, 0, 0.15), 0 0.1em 0.1em rgba(0, 0, 0, 0.2), 0 0.2em 0.2em rgba(0, 0, 0, 0.15), 0 0.4em 0.4em rgba(0, 0, 0, 0.1)
@@ -116,7 +118,7 @@
   .chat
     text-align: left
     padding: 0.8rem
-    border-bottom: 0.01rem solid v.$fg-color
+    border-bottom: 0.01rem solid v.$border-color
 
     &:active, &:focus
       background-color: #e2e2e2
@@ -126,5 +128,5 @@
 
   #send-button
     border: none
-    border-left: 0.01rem solid v.$fg-color
+    border-left: 0.01rem solid v.$border-color
     padding: .8rem
