@@ -271,10 +271,8 @@ proc matrixClient*: Vnode =
     tdiv(id = "matrix-client"):
       case globalClientView:
       of ClientView.signin:
-        main:
-          signinModal()
+        signinModal()
       of ClientView.chat:
-        main:
-          chatList(initSyncResp)
-          chatPane(currentUserId, selectedRoom)
-          chatInfo(selectedRoom)
+        chatList(initSyncResp)
+        chatPane(currentUserId, selectedRoom)
+        chatInfo(selectedRoom)

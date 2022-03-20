@@ -6,7 +6,8 @@ proc createDom*: VNode =
   result = buildHtml:
     tdiv:
       headerSection()
-      matrixClient()
+      main:
+        matrixClient()
       footerSection()
 
-setRenderer createDom
+setRenderer(createDom, root = cstring "global")
