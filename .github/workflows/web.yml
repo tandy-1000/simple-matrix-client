@@ -2,10 +2,10 @@ name: Web deployment
 on:
   push:
     paths:
-      - ".github/workflows/*"
-      - "simple_matrix_client/*"
+      - ".github/workflows/**"
+      - "simple_matrix_client/**"
       - "**.nim"
-      - "public/*"
+      - "public/**"
       - "simple_matrix_client.nimble"
 
 jobs:
