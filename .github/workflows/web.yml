@@ -38,7 +38,7 @@ jobs:
         run: nimble buildjs
 
       - name: Minify JS
-        run: node --stack_size=1000000 uglifyjs public/js/simple_matrix_client.js -c -o public/js/simple_matrix_client.js
+        run: uglifyjs public/js/simple_matrix_client.js -c -o public/js/simple_matrix_client.js
 
       - name: Minify HTML
         run: html-minifier --collapse-whitespace --remove-optional-tags --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype public/index.html -o public/index.html && html-minifier --collapse-whitespace --remove-optional-tags --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype public/mirror/index.html -o public/mirror/index.html
