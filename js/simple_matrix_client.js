@@ -18409,24 +18409,30 @@ function chatInfo_620759604(roomId_620759605) {
 
 }
 
-function matrixClient_620760591() {
-  var result_620760592 = null;
+function matrixClient_620760591(renderChatList_620760592, renderChatInfo_620760593) {
+  var result_620760594 = null;
 
-    var tmp_620760593 = tree_687866634(44, []);
-    tmp_620760593.id = "matrix-client";
+    var tmp_620760595 = tree_687866634(44, []);
+    tmp_620760595.id = "matrix-client";
     switch (globalClientView_620757014[0]) {
     case 0:
-      add_687866571(tmp_620760593, signinModal_620759544());
+      add_687866571(tmp_620760595, signinModal_620759544());
       break;
     case 1:
-      add_687866571(tmp_620760593, chatList_620760586(initSyncResp_620757021[0]));
-      add_687866571(tmp_620760593, chatPane_620760518(currentUserId_620757019[0], selectedRoom_620757020[0]));
-      add_687866571(tmp_620760593, chatInfo_620759604(selectedRoom_620757020[0]));
+      if (renderChatList_620760592) {
+      add_687866571(tmp_620760595, chatList_620760586(initSyncResp_620757021[0]));
+      }
+      
+      add_687866571(tmp_620760595, chatPane_620760518(currentUserId_620757019[0], selectedRoom_620757020[0]));
+      if (renderChatInfo_620760593) {
+      add_687866571(tmp_620760595, chatInfo_620759604(selectedRoom_620757020[0]));
+      }
+      
       break;
     }
-    result_620760592 = tmp_620760593;
+    result_620760594 = tmp_620760595;
 
-  return result_620760592;
+  return result_620760594;
 
 }
 
@@ -18449,7 +18455,7 @@ function createDom_452984838() {
     var tmp_452984840 = tree_687866634(44, []);
     add_687866571(tmp_452984840, headerSection_637534407());
     var tmp_452984841 = tree_687866634(31, []);
-    add_687866571(tmp_452984841, matrixClient_620760591());
+    add_687866571(tmp_452984841, matrixClient_620760591(true, true));
     add_687866571(tmp_452984840, tmp_452984841);
     add_687866571(tmp_452984840, footerSection_637534412());
     result_452984839 = tmp_452984840;
