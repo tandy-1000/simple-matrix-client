@@ -1,0 +1,49 @@
+@use 'include/_variables' as v
+
+a
+  color: v.$fg-color
+  text-decoration: none
+
+header, footer
+  padding: 1.5em
+  box-sizing: border-box
+
+header
+  border: 0.01rem solid v.$fg-color
+  border-top: none
+  border-right: none
+  border-left: none
+
+h2, h3, h4
+  text-align: center
+  margin: 0
+
+main
+  flex: 1 0 auto
+  display: flex
+  flex-direction: row
+  /* margin: auto 20vw;
+
+input
+  background: none
+  border: none
+  outline: none
+  padding: .8rem
+  font: normal 1rem v.$font
+  flex-grow: 1
+
+p
+  margin: 0
+
+button
+  background-color: v.$button-color
+  font: normal 1rem v.$font
+
+  &:hover
+    background-color: v.$button-accent
+
+footer
+  border: 0.01rem solid v.$fg-color
+  border-bottom: none
+  border-right: none
+  border-left: none
