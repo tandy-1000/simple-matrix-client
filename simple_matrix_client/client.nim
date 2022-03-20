@@ -266,7 +266,7 @@ proc chatList*(syncResp: SyncRes): Vnode =
         # TODO: properly render rooms with real names
         renderJoinedRooms(syncResp.rooms.join)
 
-proc matrixClient(renderChatList, renderChatInfo = true)*: Vnode =
+proc matrixClient*(renderChatList, renderChatInfo = true): Vnode =
   result = buildHtml:
     tdiv(id = "matrix-client"):
       case globalClientView:
