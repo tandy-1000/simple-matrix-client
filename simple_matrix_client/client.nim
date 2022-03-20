@@ -149,7 +149,6 @@ proc getMatrixRoomState(roomId: string) {.async.} =
   let res = await client.getRoomState(roomId)
   roomStateResp = res
   chatInfoView = ChatInfoView.loaded
-  redraw()
 
 proc chatInfo*(roomId: string = ""): Vnode =
   if roomId == "":
@@ -173,13 +172,11 @@ proc chatInfo*(roomId: string = ""): Vnode =
 
 proc getMessages(roomId, prevBatch: string) {.async.} =
   roomMessagesResp = await client.getRoomMessages(roomId, `from` = prevBatch, dir = Direction.backward)
-  redraw()
 
 proc onChatClick(ev: kdom.Event; n: VNode) =
   selectedRoom = $n.id
   chatPaneView = ChatPaneView.selected
   discard getMessages(selectedRoom, initSyncResp.rooms.join[selectedRoom].timeline.prevBatch)
-  redraw()
 
 proc renderJoinedRooms(joinedRooms: Table[string, JoinedRoom]): Vnode =
   # TODO: Add code to detect whether there is an active overflow and set the last-chat class
