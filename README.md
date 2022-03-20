@@ -4,11 +4,23 @@ A simple matrix web client implemented using [matrix-nim-sdk](https://github.com
 
 ![image](docs/client.png)
 
-Features:
+### Features:
  - Stores previously signed-in accounts in IndexedDB
  - Guest registration with display name
 
-TODO:
+### How to compile
+
+Requirements:
+ - Dart Sass
+
+Run the following commands:
+```
+nimble sass
+nimble buildjs
+nim r src/server.nim
+```
+
+### TODO:
  - [x] Indicate what chat is currently selected
  - [x] Send messages
  - [x] Store login token in IndexedDB
