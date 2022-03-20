@@ -2916,7 +2916,7 @@ function newAsyncMatrixClient_1392509388(homeserver_1392509389) {
   return result_1392509390;
 
 }
-var db_620757011 = [(window.indexedDB)];
+var db_620757011 = [(window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB)];
 var dbOptions_620757012 = [{keyPath: "userId", m_type: NTI2298478603, autoIncrement: false}];
 var client_620757013 = [newAsyncMatrixClient_1392509388(makeNimstrLit("https://matrix.org"))];
 var globalClientView_620757014 = [0];
@@ -16397,7 +16397,7 @@ function chatList_620760586(syncResp_620760587) {
 
     var tmp_620760589 = tree_687866634(44, []);
     tmp_620760589.id = "list-pane";
-    tmp_620760589.class = "col";
+    tmp_620760589.class = "column";
     var tmp_620760590 = tree_687866634(23, []);
     tmp_620760590.id = "chat-header";
     add_687866571(tmp_620760590, text_687866686(makeNimstrLit("Chats")));
@@ -17828,7 +17828,7 @@ function chatPane_620760518(userId_620760519, roomId_620760520) {
 
     var tmp_620760522 = tree_687866634(44, []);
     tmp_620760522.id = "chat-pane";
-    tmp_620760522.class = "col";
+    tmp_620760522.class = "column";
     if (!(eqStrings(roomId_620760520, []))) {
     var tmp_620760523 = tree_687866634(23, []);
     tmp_620760523.id = "chat-header";
@@ -18387,7 +18387,7 @@ function chatInfo_620759604(roomId_620759605) {
     
     var tmp_620759785 = tree_687866634(44, []);
     tmp_620759785.id = "info-pane";
-    tmp_620759785.class = "col";
+    tmp_620759785.class = "column";
     var tmp_620759786 = tree_687866634(23, []);
     tmp_620759786.id = "chat-header";
     add_687866571(tmp_620759786, text_687866686(makeNimstrLit("Chat Information")));
