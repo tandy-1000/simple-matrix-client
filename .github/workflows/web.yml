@@ -25,8 +25,9 @@ jobs:
           path: nim
           version: devel
 
-      - name: Setup Dart Sass, UglifyJS, html-minifer
+      # - name: Setup Dart Sass, UglifyJS, html-minifer
         # run: npm install -g sass uglify-js html-minifier
+      - name: Setup Dart Sass, html-minifer
         run: npm install -g sass html-minifier
 
       - name: Install dependencies
