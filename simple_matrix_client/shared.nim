@@ -2,32 +2,8 @@ import
   pkg/karax/[kbase, karaxdsl, vdom],
   pkg/matrix,
   pkg/nodejs/jsindexeddb,
-  std/[asyncjs, json, jsffi, dom]
-
-type
-  ClientView* = enum
-    signin = "signin",
-    chat = "chat"
-  MenuView* = enum
-    menu = "menu",
-    loginView = "login",
-    registerView = "register",
-    syncing = "syncing"
-  ChatListView* = enum
-    skeleton = "skeleton",
-    full = "full"
-  ChatPaneView* = enum
-    noChat = "none",
-    selected = "selected"
-  ChatInfoView* = enum
-    noInfo = "noInfo",
-    loading = "loading",
-    loaded = "loaded"
-
-  User* = object
-    userId*: cstring
-    homeserver*: cstring
-    token*: cstring
+  std/[asyncjs, json, jsffi, dom],
+  types
 
 proc setTimeoutAsync*(ms: int): Future[void] =
   let promise = newPromise() do (res: proc(): void):
