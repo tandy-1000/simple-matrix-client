@@ -3,17 +3,18 @@ import
   pkg/matrix,
   pkg/nodejs/jsindexeddb,
   std/[asyncjs, tables, json, jsffi, enumerate, times, options],
-  shared
+  shared, types
 from std/sugar import `=>`, collect
 
 const
   dbName = "simple-matrix-client"
-  homeserver = "https://matrix.org"
+  defaultHomeserver = "https://matrix.org"
 
 var
   db: IndexedDB = newIndexedDB()
   dbOptions = IDBOptions(keyPath: "userId")
-  client = newAsyncMatrixClient(homeserver = homeserver)
+  client = newAsyncMatrixClient(homeserver = defaultHomeserver)
+
   globalClientView = ClientView.signin
   globalMenuView = MenuView.menu
   chatInfoView: ChatInfoView = ChatInfoView.noInfo
@@ -43,7 +44,7 @@ proc initialSync {.async.} =
   redraw()
   # discard longSync()
 
-proc login =
+proc login* =
   proc loginMatrix(homeserver, username, password: string) {.async.} =
     client = newAsyncMatrixClient(homeserver)
     let loginRes: LoginRes = await client.login(username, password)
@@ -76,7 +77,7 @@ proc register =
     let regRes: RegisterRes = await client.registerGuest(deviceId = deviceId)
     currentUserId = regRes.userId
     client.setToken regRes.accessToken
-    let displaynameRes = await client.setDisplayname(regRes.userId, alias)
+    discard client.setDisplayname(regRes.userId, alias)
     discard initialSync()
     discard db.storeToken(currentUserId, homeserver, regRes.accessToken, dbOptions)
 
@@ -86,7 +87,7 @@ proc register =
 
   discard registerMatrix(homeserver, alias)
 
-proc renderRegister*: Vnode =
+proc renderRegister: Vnode =
   result = buildHtml:
     tdiv(class = "modal"):
       h3(class = "modal-header"):
@@ -103,9 +104,10 @@ proc validate(homeserver, token: string) {.async.} =
     currentUserId = whoAmIResp.userId
     discard initialSync()
   except MatrixError:
+    ## TODO: proper error handling
     echo "bad token!"
 
-proc getUsers {.async.} =
+proc getUsers(db: IndexedDB, dbOptions: IDBOptions) {.async.} =
   let objStore = await getAll(db, "user".cstring, dbOptions)
   storedUsers = collect:
     for user in to(objStore, seq[User]): {user.userId: user}
@@ -113,7 +115,7 @@ proc getUsers {.async.} =
 
 proc renderMenu*: Vnode =
   if storedUsers.len == 0:
-    discard getUsers()
+    discard getUsers(db, dbOptions)
   result = buildHtml:
     tdiv(class = "modal"):
       for userId, user in storedUsers.pairs:
@@ -151,7 +153,7 @@ proc getMatrixRoomState(roomId: string) {.async.} =
   chatInfoView = ChatInfoView.loaded
   redraw()
 
-proc chatInfo*(roomId: string = ""): Vnode =
+proc renderChatInfo*(roomId: string = ""): Vnode =
   if roomId == "":
     chatInfoView = ChatInfoView.noInfo
   else:
@@ -192,7 +194,7 @@ proc renderJoinedRooms(joinedRooms: Table[string, JoinedRoom]): Vnode =
             text id
 
 proc send(ev: kdom.Event; n: VNode) =
-  var kbev = ((KeyboardEvent)ev)
+  var kbev = (KeyboardEvent)ev
   if not kbev.shiftKey:
     proc matrixSend(message: string) {.async.} =
       discard await client.sendMessage(eventType = "m.room.message", roomId = selectedRoom, txnId = $getTime(), body = message, msgtype = MessageType.`m.text`)
@@ -238,17 +240,17 @@ proc renderChatMessages*(userId: string, events: seq[ClientEvent]): Vnode =
           elif event.`type` == "m.room.encrypted":
             renderMessage(userId, event.eventId, messageClass, event.sender, "`Encrypted message`")
 
-proc chatPane*(userId: string, roomId: string): Vnode =
+proc renderChatPane*(userId, roomId: string, syncResp: SyncRes): Vnode =
   result = buildHtml:
     tdiv(id = "chat-pane", class = "column"):
       if roomId != "":
         h3(id = "chat-header"):
-            text roomId
+          text roomId
       case chatPaneView:
       of ChatPaneView.noChat:
         renderNoneSelected()
       of ChatPaneView.selected:
-        let events = initSyncResp.rooms.join[roomId].timeline.events
+        let events = syncResp.rooms.join[roomId].timeline.events
         # let events = roomMessagesResp.chunk
         renderChatMessages(userId, events)
       tdiv(id = "message-box", class = "border-box"):
@@ -256,27 +258,30 @@ proc chatPane*(userId: string, roomId: string): Vnode =
         button(id = "send-button", onclick = send):
           text "➤"
 
-proc chatList*(syncResp: SyncRes): Vnode =
+proc renderChatList*(view: ChatListView, syncResp: SyncRes): Vnode =
   result = buildHtml:
     tdiv(id = "list-pane", class = "column"):
       h3(id = "chat-header"):
         text "Chats"
-      case chatListView:
+      case view:
       of ChatListView.skeleton:
         renderJoinedRooms(syncResp.rooms.join)
       of ChatListView.full:
         # TODO: properly render rooms with real names
         renderJoinedRooms(syncResp.rooms.join)
 
-proc matrixClient*(renderChatList, renderChatInfo = true): Vnode =
+proc matrixClient*(roomId: string = "", chatList, chatInfo = true): Vnode =
+  if roomId != "":
+    ## TODO: validate roomId
+    selectedRoom = roomId
   result = buildHtml:
     tdiv(id = "matrix-client"):
       case globalClientView:
       of ClientView.signin:
         signinModal()
       of ClientView.chat:
-        if renderChatList:
-          chatList(initSyncResp)
-        chatPane(currentUserId, selectedRoom)
-        if renderChatInfo:
-          chatInfo(selectedRoom)
+        if chatList:
+          renderChatList(chatListView, syncResp)
+        renderChatPane(currentUserId, selectedRoom, syncResp)
+        if chatInfo:
+          renderChatInfo(selectedRoom)
