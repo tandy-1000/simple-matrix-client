@@ -43,6 +43,7 @@ To package the client's CSS, build `library.sass` located in the packages nimble
  - [x] Store login token in IndexedDB
  - [x] Display encrypted messages
  - [x] Long-polling for Sync API
+ - [x] Dark theme
  - [ ] Refactor and setup a proper data store for sync and chat data
     - [ ] use global vars to store data from initial sync
     - [ ] subsequent syncs / get messages will add to those vars
