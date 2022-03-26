@@ -1,20 +1,24 @@
 @use '../include/_variables' as v
+@use '../include/_themes' as t
 
 #matrix-client
-
   .signed-in-user
-    border: 0.01rem solid v.$inner-border-color
+    border: 0.01rem solid v.$inner-border
     border-radius: .5em
     margin: 1em
     padding: 1em
+    @include t.dark
+      border-color: v.$dark-inner-border
 
   .login-input
     background: none
-    border: 0.01rem solid v.$inner-border-color
+    border: 0.01rem solid v.$inner-border
     outline: none
     padding: .4rem
     margin: .5em 1em
     font: normal 1rem v.$font
+    @include t.dark
+      border-color: v.$dark-inner-border
 
   #login
     margin-bottom: 0

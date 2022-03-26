@@ -1,21 +1,23 @@
 @use '../include/_variables' as v
-
-$button-color: #EEEEEE !default
-$button-accent: #E2E2E2 !default
+@use '../include/_themes' as t
 
 a
-  color: v.$fg-color
+  color: v.$fg
   text-decoration: none
+  @include t.dark
+    color: v.$dark-fg
 
 header, footer
   padding: 1.5em
   box-sizing: border-box
 
 header
-  border: 0.01rem solid v.$border-color
+  border: 0.01rem solid v.$border
   border-top: none
   border-right: none
   border-left: none
+  @include t.dark
+    border-color: v.$dark-border
 
 h2, h3, h4
   text-align: center
@@ -39,15 +41,23 @@ p
   margin: 0
 
 button
-  background-color: $button-color
+  color: v.$fg
+  background-color: v.$button
   font: normal 1rem v.$font
   border: none
+  @include t.dark
+    color: v.$dark-fg
+    background-color: v.$dark-button
 
   &:hover
-    background-color: $button-accent
+    background-color: v.$button-accent
+    @include t.dark
+      background-color: v.$dark-button-accent
 
 footer
-  border: 0.01rem solid v.$border-color
+  border: 0.01rem solid v.$border
   border-bottom: none
   border-right: none
   border-left: none
+  @include t.dark
+    border-color: v.$dark-border

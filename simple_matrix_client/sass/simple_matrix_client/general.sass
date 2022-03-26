@@ -1,4 +1,5 @@
 @use '../include/_variables' as v
+@use '../include/_themes' as t
 
 #matrix-client
   font: normal .95rem v.$font
@@ -6,18 +7,22 @@
   flex: 1 0 auto
 
   .border-box
-    border: 0.01rem solid v.$inner-border-color
+    border: 0.01rem solid v.$inner-border
+    @include t.dark
+      border-color: v.$dark-inner-border
 
   .container
     margin: auto
 
   .modal
-    border: 0.01rem solid v.$inner-border-color
+    border: 0.01rem solid v.$inner-border
     border-radius: .5em
     padding: 2em
     display: flex
     flex-direction: column
     align-items: center
+    @include t.dark
+      border-color: v.$dark-inner-border
 
   .modal-header
     margin-bottom: 1.25em
@@ -25,10 +30,12 @@
   .column
     display: flex
     flex-direction: column
-    border: 0.01rem solid v.$border-color
+    border: 0.01rem solid v.$border
     border-top: none
     border-bottom: none
     align-items: stretch
+    @include t.dark
+      border-color: v.$dark-border
 
   .heading
     margin: 1.5em auto 0em
@@ -42,4 +49,6 @@
   .text-button
     margin: 1em
     padding: .5rem
-    border: 0.01rem solid v.$inner-border-color
+    border: 0.01rem solid v.$inner-border
+    @include t.dark
+      border-color: v.$dark-inner-border

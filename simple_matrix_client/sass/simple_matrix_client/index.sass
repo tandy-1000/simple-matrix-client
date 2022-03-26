@@ -1,16 +1,18 @@
 @use '../include/_variables' as v
+@use '../include/_themes' as t
 @use 'library'
 
-$scroll-accent: #D7D7D7 !default
-$scrollbar-accent: #BFBFBF !default
-
 html, body
-  color: v.$fg-color
-  background: v.$bg-color
+  color: v.$fg
+  background: v.$bg
   padding: 0
   margin: 0
   overflow-x: hidden
-  scrollbar-color: $scrollbar-accent $scroll-accent
+  scrollbar-color: v.$scrollbar-accent v.$scroll-accent
+  @include t.dark
+    color: v.$dark-fg
+    background: v.$dark-bg
+    scrollbar-color: v.$dark-scrollbar-accent v.$dark-scroll-accent
 
 *, ::after, ::before
   box-sizing: border-box
@@ -20,5 +22,7 @@ html, body
   display: flex
   flex-direction: column
   min-height: 100vh
-  border: 0.01rem solid v.$border-color
+  border: 0.01rem solid v.$border
   @import 'global'
+  @include t.dark
+    border-color: v.$dark-border
