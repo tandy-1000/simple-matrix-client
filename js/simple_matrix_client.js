@@ -1821,7 +1821,6 @@ function toJSStr(s_33556807) {
                 }
             } while (false);
 ++excHandler;
-            Temporary7 = framePtr;
             try {
             res_33556842[j_33556844] = decodeURIComponent(helper_33556857.join(""));
 --excHandler;
@@ -1829,11 +1828,9 @@ function toJSStr(s_33556807) {
  var prevJSError = lastJSError;
  lastJSError = EXCEPTION;
  --excHandler;
-            framePtr = Temporary7;
             res_33556842[j_33556844] = helper_33556857.join("");
             lastJSError = prevJSError;
             } finally {
-            framePtr = Temporary7;
             }
           }
           
@@ -2556,7 +2553,6 @@ function unhandledException(e_33556663) {
     add_33556419(buf_33556664, 0, e_33556663.name);
     buf_33556664[0].push.apply(buf_33556664[0], makeNimstrLit("]\x0A"));;
     var cbuf_33556665 = toJSStr(buf_33556664[0]);
-    framePtr = null;
       if (typeof(Error) !== "undefined") {
     throw new Error(cbuf_33556665);
   }
@@ -4598,7 +4594,7 @@ function mustRehash_620758178(t_620758180) {
   var result_620758181 = false;
 
     if (!((t_620758180.counter < (t_620758180.data).length))) {
-    failedAssertImpl_218103864(makeNimstrLit("hashcommon.nim(29, 9) `\x0At.counter < t.dataLen` "));
+    failedAssertImpl_218103864(makeNimstrLit("hashcommon.nim(33, 9) `\x0At.counter < t.dataLen` "));
     }
     
     result_620758181 = ((mulInt((t_620758180.data).length, 2) < mulInt(t_620758180.counter, 3)) || (subInt((t_620758180.data).length, t_620758180.counter) < 4));
@@ -4723,7 +4719,7 @@ async function getUsers_620757653(db_620757654, dbOptions_620757655) {
             HEX5BHEX5DHEX3D_620757781(collectResult_620757673[0], user_620757740.userId, user_620757740);
             i_452984977 = addInt(i_452984977, 1);
             if (!(((colontmp__452984975).length == L_452984978))) {
-            failedAssertImpl_218103864(makeNimstrLit("iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
+            failedAssertImpl_218103864(makeNimstrLit("iterators.nim(243, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
             
           }
@@ -5351,7 +5347,7 @@ function encodeUrl_1476395048(s_1476395049, usePlus_1476395050) {
             }
             i_452985006 = addInt(i_452985006, 1);
             if (!(((s_1476395049).length == L_452985007))) {
-            failedAssertImpl_218103864(makeNimstrLit("iterators.nim(258, 11) `len(a) == L` the length of the string changed while iterating over it"));
+            failedAssertImpl_218103864(makeNimstrLit("iterators.nim(261, 11) `len(a) == L` the length of the string changed while iterating over it"));
             }
             
           }
@@ -6682,7 +6678,6 @@ function buildMxError_1711276121(body_1711276122) {
 
   BeforeRet: do {
 ++excHandler;
-    Temporary2 = framePtr;
     try {
     var parsed_1711276260 = fromJson_1711276124(body_1711276122);
     if ((((parsed_1711276260.errcode).length == 0) || ((parsed_1711276260.error).length == 0))) {
@@ -6697,11 +6692,9 @@ function buildMxError_1711276121(body_1711276122) {
  var prevJSError = lastJSError;
  lastJSError = EXCEPTION;
  --excHandler;
-    framePtr = Temporary2;
     raiseException({body: nimCopy(null, body_1711276122, NTI33554439), m_type: NTI1711276078, parent: null, name: null, message: [], trace: [], up: null}, "UnknownError:ObjectType");
     lastJSError = prevJSError;
     } finally {
-    framePtr = Temporary2;
     }
   } while (false);
 
@@ -6771,7 +6764,6 @@ function parseHook_1409286370(s_1409286372, i_1409286373, i_1409286373_Idx, v_14
       var v2_1409286426 = [0];
       parseHook_1409286394(s_1409286372, i_1409286373, i_1409286373_Idx, v2_1409286426, 0);
 ++excHandler;
-      Temporary6 = framePtr;
       try {
       v_1409286374[v_1409286374_Idx] = v2_1409286426[0];
 --excHandler;
@@ -6779,11 +6771,9 @@ function parseHook_1409286370(s_1409286372, i_1409286373, i_1409286373_Idx, v_14
  var prevJSError = lastJSError;
  lastJSError = EXCEPTION;
  --excHandler;
-      framePtr = Temporary6;
       raiseException({message: (makeNimstrLit("Number type to small to contain the number. At offset: ") || []).concat(HEX24_318767107(i_1409286373[i_1409286373_Idx]) || []), parent: null, m_type: NTI1778384899, name: null, trace: [], up: null}, "JsonError");
       lastJSError = prevJSError;
       } finally {
-      framePtr = Temporary6;
       }
     }
     
@@ -7076,7 +7066,7 @@ function mustRehash_1560281791(t_1560281793) {
   var result_1560281794 = false;
 
     if (!((t_1560281793.counter < (t_1560281793.data).length))) {
-    failedAssertImpl_218103864(makeNimstrLit("hashcommon.nim(29, 9) `\x0At.counter < t.dataLen` "));
+    failedAssertImpl_218103864(makeNimstrLit("hashcommon.nim(33, 9) `\x0At.counter < t.dataLen` "));
     }
     
     result_1560281794 = ((mulInt((t_1560281793.data).length, 2) < mulInt(t_1560281793.counter, 3)) || (subInt((t_1560281793.data).length, t_1560281793.counter) < 4));
@@ -7323,7 +7313,7 @@ function parseHeaders_1409286239(headers_1409286240) {
             HEX5BHEX5DHEX3D_1560284339(httpHeaders_1409286242, key_1409286266, val_1409286267);
             i_452985072 = addInt(i_452985072, 1);
             if (!(((ckeys_1409286243).length == L_452985073))) {
-            failedAssertImpl_218103864(makeNimstrLit("iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
+            failedAssertImpl_218103864(makeNimstrLit("iterators.nim(243, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
             
           }
@@ -7677,7 +7667,7 @@ function mustRehash_1811940024(t_1811940026) {
   var result_1811940027 = false;
 
     if (!((t_1811940026.counter < (t_1811940026.data).length))) {
-    failedAssertImpl_218103864(makeNimstrLit("hashcommon.nim(29, 9) `\x0At.counter < t.dataLen` "));
+    failedAssertImpl_218103864(makeNimstrLit("hashcommon.nim(33, 9) `\x0At.counter < t.dataLen` "));
     }
     
     result_1811940027 = ((mulInt((t_1811940026.data).length, 2) < mulInt(t_1811940026.counter, 3)) || (subInt((t_1811940026.data).length, t_1811940026.counter) < 4));
@@ -8285,7 +8275,6 @@ function parseHook_1778384952(s_1778384953, i_1778384954, i_1778384954_Idx, v_17
       else {
         if (!(0 < (data_1778385706).length)) Temporary32 = false; else {          Temporary32 = (ConstSet23[data_1778385706[0]] != undefined);        }      if (Temporary32) {
 ++excHandler;
-      Temporary34 = framePtr;
       try {
       v_1778384955[v_1778384955_Idx] = newJInt_1811939409(nsuParseInt(data_1778385706));
 --excHandler;
@@ -8293,10 +8282,8 @@ function parseHook_1778384952(s_1778384953, i_1778384954, i_1778384954_Idx, v_17
  var prevJSError = lastJSError;
  lastJSError = EXCEPTION;
  --excHandler;
-      framePtr = Temporary34;
       if (lastJSError && (isObj(lastJSError.m_type, NTI33555124))) {
 ++excHandler;
-      Temporary36 = framePtr;
       try {
       v_1778384955[v_1778384955_Idx] = newJFloat_1811939412(nsuParseFloat(data_1778385706));
 --excHandler;
@@ -8304,7 +8291,6 @@ function parseHook_1778384952(s_1778384953, i_1778384954, i_1778384954_Idx, v_17
  var prevJSError = lastJSError;
  lastJSError = EXCEPTION;
  --excHandler;
-      framePtr = Temporary36;
       if (lastJSError && (isObj(lastJSError.m_type, NTI33555124))) {
       raiseException({message: (makeNimstrLit("Invalid number. At offset: ") || []).concat(HEX24_318767107(i_1778384954[i_1778384954_Idx]) || []), parent: null, m_type: NTI1778384899, name: null, trace: [], up: null}, "JsonError");
       }
@@ -8313,7 +8299,6 @@ function parseHook_1778384952(s_1778384953, i_1778384954, i_1778384954_Idx, v_17
       }
       lastJSError = prevJSError;
       } finally {
-      framePtr = Temporary36;
       }
       }
       else {
@@ -8321,7 +8306,6 @@ function parseHook_1778384952(s_1778384953, i_1778384954, i_1778384954_Idx, v_17
       }
       lastJSError = prevJSError;
       } finally {
-      framePtr = Temporary34;
       }
       }
       else {
@@ -9057,7 +9041,7 @@ function mustRehash_2214593650(t_2214593652) {
   var result_2214593653 = false;
 
     if (!((t_2214593652.counter < (t_2214593652.data).length))) {
-    failedAssertImpl_218103864(makeNimstrLit("hashcommon.nim(29, 9) `\x0At.counter < t.dataLen` "));
+    failedAssertImpl_218103864(makeNimstrLit("hashcommon.nim(33, 9) `\x0At.counter < t.dataLen` "));
     }
     
     result_2214593653 = ((mulInt((t_2214593652.data).length, 2) < mulInt(t_2214593652.counter, 3)) || (subInt((t_2214593652.data).length, t_2214593652.counter) < 4));
@@ -10067,7 +10051,7 @@ function mustRehash_2214595690(t_2214595692) {
   var result_2214595693 = false;
 
     if (!((t_2214595692.counter < (t_2214595692.data).length))) {
-    failedAssertImpl_218103864(makeNimstrLit("hashcommon.nim(29, 9) `\x0At.counter < t.dataLen` "));
+    failedAssertImpl_218103864(makeNimstrLit("hashcommon.nim(33, 9) `\x0At.counter < t.dataLen` "));
     }
     
     result_2214595693 = ((mulInt((t_2214595692.data).length, 2) < mulInt(t_2214595692.counter, 3)) || (subInt((t_2214595692.data).length, t_2214595692.counter) < 4));
@@ -10470,7 +10454,6 @@ function parseHook_2214597060(s_2214597062, i_2214597063, i_2214597063_Idx, v_22
       var v2_2214597089 = [0];
       parseHook_1409286394(s_2214597062, i_2214597063, i_2214597063_Idx, v2_2214597089, 0);
 ++excHandler;
-      Temporary6 = framePtr;
       try {
       v_2214597064[v_2214597064_Idx] = v2_2214597089[0];
 --excHandler;
@@ -10478,11 +10461,9 @@ function parseHook_2214597060(s_2214597062, i_2214597063, i_2214597063_Idx, v_22
  var prevJSError = lastJSError;
  lastJSError = EXCEPTION;
  --excHandler;
-      framePtr = Temporary6;
       raiseException({message: (makeNimstrLit("Number type to small to contain the number. At offset: ") || []).concat(HEX24_318767107(i_2214597063[i_2214597063_Idx]) || []), parent: null, m_type: NTI1778384899, name: null, trace: [], up: null}, "JsonError");
       lastJSError = prevJSError;
       } finally {
-      framePtr = Temporary6;
       }
     }
     
@@ -12099,7 +12080,7 @@ function mustRehash_2214598591(t_2214598593) {
   var result_2214598594 = false;
 
     if (!((t_2214598593.counter < (t_2214598593.data).length))) {
-    failedAssertImpl_218103864(makeNimstrLit("hashcommon.nim(29, 9) `\x0At.counter < t.dataLen` "));
+    failedAssertImpl_218103864(makeNimstrLit("hashcommon.nim(33, 9) `\x0At.counter < t.dataLen` "));
     }
     
     result_2214598594 = ((mulInt((t_2214598593.data).length, 2) < mulInt(t_2214598593.counter, 3)) || (subInt((t_2214598593.data).length, t_2214598593.counter) < 4));
@@ -12671,7 +12652,7 @@ function mustRehash_2214600242(t_2214600244) {
   var result_2214600245 = false;
 
     if (!((t_2214600244.counter < (t_2214600244.data).length))) {
-    failedAssertImpl_218103864(makeNimstrLit("hashcommon.nim(29, 9) `\x0At.counter < t.dataLen` "));
+    failedAssertImpl_218103864(makeNimstrLit("hashcommon.nim(33, 9) `\x0At.counter < t.dataLen` "));
     }
     
     result_2214600245 = ((mulInt((t_2214600244.data).length, 2) < mulInt(t_2214600244.counter, 3)) || (subInt((t_2214600244.data).length, t_2214600244.counter) < 4));
@@ -13099,7 +13080,7 @@ function mustRehash_2214601789(t_2214601791) {
   var result_2214601792 = false;
 
     if (!((t_2214601791.counter < (t_2214601791.data).length))) {
-    failedAssertImpl_218103864(makeNimstrLit("hashcommon.nim(29, 9) `\x0At.counter < t.dataLen` "));
+    failedAssertImpl_218103864(makeNimstrLit("hashcommon.nim(33, 9) `\x0At.counter < t.dataLen` "));
     }
     
     result_2214601792 = ((mulInt((t_2214601791.data).length, 2) < mulInt(t_2214601791.counter, 3)) || (subInt((t_2214601791.data).length, t_2214601791.counter) < 4));
@@ -13923,7 +13904,6 @@ async function validate_620757597(homeserver_620757598, token_620757599) {
   BeforeRet: do {
     client_620757014[0] = nimCopy(client_620757014[0], newAsyncMatrixClient_1409286627(homeserver_620757598, token_620757599), NTI1409286189);
 ++excHandler;
-    Temporary2 = framePtr;
     try {
     var whoAmIResp_620757651 = (await whoAmI_620757607(client_620757014[0]));
     currentUserId_620757020[0] = nimCopy(null, whoAmIResp_620757651.userId, NTI33554439);
@@ -13933,7 +13913,6 @@ async function validate_620757597(homeserver_620757598, token_620757599) {
  var prevJSError = lastJSError;
  lastJSError = EXCEPTION;
  --excHandler;
-    framePtr = Temporary2;
     if (lastJSError && (isObj(lastJSError.m_type, NTI1711276077))) {
     rawEcho(makeNimstrLit("bad token!"));
     }
@@ -13942,7 +13921,6 @@ async function validate_620757597(homeserver_620757598, token_620757599) {
     }
     lastJSError = prevJSError;
     } finally {
-    framePtr = Temporary2;
     }
     result_620757601 = undefined;
     break BeforeRet;
@@ -14097,7 +14075,7 @@ function dumpStrSlow_1778385833(s_1778385834, s_1778385834_Idx, v_1778385835) {
             }
             i_2046820676 += 1;
             if (!(((v_1778385835).length == L_2046820677))) {
-            failedAssertImpl_218103864(makeNimstrLit("iterators.nim(258, 11) `len(a) == L` the length of the string changed while iterating over it"));
+            failedAssertImpl_218103864(makeNimstrLit("iterators.nim(261, 11) `len(a) == L` the length of the string changed while iterating over it"));
             }
             
           }
@@ -15717,7 +15695,7 @@ function some_2248147719(val_2248147721) {
   var result_2248147722 = ({val: null});
 
     if (!(!((val_2248147721 == null)))) {
-    failedAssertImpl_218103864(makeNimstrLit("options.nim(129, 5) `not val.isNil` "));
+    failedAssertImpl_218103864(makeNimstrLit("options.nim(133, 5) `not val.isNil` "));
     }
     
     result_2248147722.val = val_2248147721;
@@ -16651,7 +16629,7 @@ function renderChatMessages_620760475(userId_620760476, events_620760477) {
             }
             i_452985457 = addInt(i_452985457, 1);
             if (!(((events_620760477).length == L_452985458))) {
-            failedAssertImpl_218103864(makeNimstrLit("iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
+            failedAssertImpl_218103864(makeNimstrLit("iterators.nim(243, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
             
           }
@@ -16923,7 +16901,7 @@ function monthday_2348811455(dt_2348811456) {
   var result_2348811457 = 0;
 
     if (!(!((dt_2348811456.monthdayZero == 0)))) {
-    failedAssertImpl_218103864(makeNimstrLit("times.nim(1052, 28) `dt.monthdayZero != 0` Uninitialized datetime"));
+    failedAssertImpl_218103864(makeNimstrLit("times.nim(1056, 28) `dt.monthdayZero != 0` Uninitialized datetime"));
     }
     
     result_2348811457 = dt_2348811456.monthdayZero;
@@ -16972,7 +16950,7 @@ function month_2348811463(dt_2348811464) {
   var result_2348811465 = 0;
 
     if (!(!((dt_2348811464.monthdayZero == 0)))) {
-    failedAssertImpl_218103864(makeNimstrLit("times.nim(1059, 28) `dt.monthdayZero != 0` Uninitialized datetime"));
+    failedAssertImpl_218103864(makeNimstrLit("times.nim(1063, 28) `dt.monthdayZero != 0` Uninitialized datetime"));
     }
     
     result_2348811465 = dt_2348811464.monthZero;
@@ -17258,7 +17236,7 @@ function formatPattern_2348812135(dt_2348812136, pattern_2348812137, result_2348
           break;
         default: 
           if (true) {
-          failedAssertImpl_218103864(makeNimstrLit("times.nim(1828, 20) `false` "));
+          failedAssertImpl_218103864(makeNimstrLit("times.nim(1832, 20) `false` "));
           }
           
           break;
@@ -17278,7 +17256,7 @@ function formatPattern_2348812135(dt_2348812136, pattern_2348812137, result_2348
       break;
     case 33:
       if (true) {
-      failedAssertImpl_218103864(makeNimstrLit("times.nim(1831, 18) `false` "));
+      failedAssertImpl_218103864(makeNimstrLit("times.nim(1835, 18) `false` "));
       }
       
       break;
@@ -17291,7 +17269,7 @@ function format_2348813072(dt_2348813073, f_2348813074, loc_2348813075) {
   var result_2348813076 = [[]];
 
     if (!(!((dt_2348813073.monthdayZero == 0)))) {
-    failedAssertImpl_218103864(makeNimstrLit("times.nim(2069, 29) `dt.monthdayZero != 0` Uninitialized datetime"));
+    failedAssertImpl_218103864(makeNimstrLit("times.nim(2073, 29) `dt.monthdayZero != 0` Uninitialized datetime"));
     }
     
     result_2348813076[0] = nimCopy(null, [], NTI33554439);
@@ -17571,7 +17549,7 @@ function getDaysInMonth_2348810414(month_2348810415, year_2348810416) {
 
 function assertValidDate_2348810418(monthday_2348810419, month_2348810420, year_2348810421) {
     if (!((monthday_2348810419 <= getDaysInMonth_2348810414(month_2348810420, year_2348810421)))) {
-    failedAssertImpl_218103864((makeNimstrLit("times.nim(457, 10) `monthday <= getDaysInMonth(month, year)` ") || []).concat(HEX24_318767107(year_2348810421) || [],makeNimstrLit("-") || [],nsuIntToStr(month_2348810420, 2) || [],makeNimstrLit("-") || [],HEX24_318767107(monthday_2348810419) || [],makeNimstrLit(" is not a valid date") || []));
+    failedAssertImpl_218103864((makeNimstrLit("times.nim(461, 10) `monthday <= getDaysInMonth(month, year)` ") || []).concat(HEX24_318767107(year_2348810421) || [],makeNimstrLit("-") || [],nsuIntToStr(month_2348810420, 2) || [],makeNimstrLit("-") || [],HEX24_318767107(monthday_2348810419) || [],makeNimstrLit(" is not a valid date") || []));
     }
     
 
@@ -18332,7 +18310,7 @@ function renderRoomMembers_637534257(members_637534258) {
             add_704643787(tmp_637534289, tmp_637534290);
             i_452985504 = addInt(i_452985504, 1);
             if (!(((members_637534258).length == L_452985505))) {
-            failedAssertImpl_218103864(makeNimstrLit("iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
+            failedAssertImpl_218103864(makeNimstrLit("iterators.nim(243, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
             
           }
@@ -18370,7 +18348,7 @@ function renderRoomState_637534331(events_637534332) {
             }
             i_452985500 = addInt(i_452985500, 1);
             if (!(((events_637534332).length == L_452985501))) {
-            failedAssertImpl_218103864(makeNimstrLit("iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
+            failedAssertImpl_218103864(makeNimstrLit("iterators.nim(243, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
             
           }
