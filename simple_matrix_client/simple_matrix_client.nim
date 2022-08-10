@@ -1,6 +1,6 @@
 import
   pkg/karax/[karax, karaxdsl, vdom],
-  client, shared, types
+  client, shared
 
 proc createDom*: VNode =
   result = buildHtml:
