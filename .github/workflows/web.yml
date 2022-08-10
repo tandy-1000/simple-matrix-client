@@ -8,6 +8,8 @@ on:
       - "public/**"
       - "simple_matrix_client.nimble"
 
+  workflow_dispatch:
+
 jobs:
   build:
     strategy:
