@@ -1,12 +1,16 @@
 name: Web deployment
 on:
   push:
+    branches: [ main, devel ]
     paths:
       - ".github/workflows/**"
       - "simple_matrix_client/**"
       - "**.nim"
       - "public/**"
       - "simple_matrix_client.nimble"
+
+  pull_request:
+    branches: [ main ]
 
   workflow_dispatch:
 
