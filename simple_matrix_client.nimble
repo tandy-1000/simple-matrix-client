@@ -10,7 +10,7 @@ installExt    = @["nim"]
 # Dependencies
 
 requires "nim >= 1.7.1"
-requires "https://github.com/tandy-1000/matrix-nim-sdk#head"
+requires "https://github.com/tandy-1000/matrix-nim-sdk#refactor"
 requires "https://github.com/juancarlospaco/nodejs/#head"
 requires "prologue"
 requires "karax"
