@@ -14,7 +14,6 @@ var
   db: IndexedDB = newIndexedDB()
   dbOptions = IDBOptions(keyPath: "userId")
   client = newAsyncMatrixClient(homeserver = defaultHomeserver)
-
   globalClientView = ClientView.signin
   globalMenuView = MenuView.menu
   chatInfoView: ChatInfoView = ChatInfoView.noInfo
